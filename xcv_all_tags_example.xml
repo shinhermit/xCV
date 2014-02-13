@@ -191,7 +191,7 @@
 	  <xcv:month>03</xcv:month>
 	</xcv:end>
 	<xcv:title>xCV</xcv:title>
-	<xcv:domain>Composition de document</xcv:domain>
+	<xcv:metier>Composition de document</xcv:metier>
 	<xcv:technologies>
 	  <xcv:tech>
 	    <xcv:title>XML</xcv:title>
@@ -233,7 +233,7 @@
 	  <xcv:year>2014</xcv:year>
 	</xcv:end>
 	<xcv:title>Réseau neuronal</xcv:title>
-	<xcv:domain>IA</xcv:domain>
+	<xcv:metier>IA</xcv:metier>
 	<xcv:technologies>
 	  <xcv:tech>
 	    <xcv:title>C++</xcv:title>

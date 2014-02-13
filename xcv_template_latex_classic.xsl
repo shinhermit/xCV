@@ -5,6 +5,158 @@
 
    <xsl:output method="text" omit-xml-declaration="yes" encoding="UTF-8"/>
 
+
+  <!-- Reused transforms are defined as functions -->
+  <!-- EXPERIENCE AND JOBS (positions) -->
+  <xsl:template name="jobsTemplate">
+    <xsl:param name="sectionTitle"/>
+    <xsl:param name="positionsList"/>
+
+    <xsl:if test="$positionsList">
+      <xsl:text>&#xA;&#xA;\section*{</xsl:text><xsl:value-of select="$sectionTitle"/><xsl:text>}&#xA;</xsl:text>
+      <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
+      <xsl:for-each select="$positionsList">
+	<xsl:variable name="begin" select="./xcv:begin/xcv:year"/>
+	<xsl:value-of select="$begin"/>
+	<xsl:if test="$begin/text()">
+	  <xsl:text>--</xsl:text>
+	</xsl:if>
+	<xsl:value-of select="./xcv:end/xcv:year"/><xsl:text>&amp;</xsl:text>
+	<xsl:value-of select="./xcv:title"/>
+	<xsl:variable name="company" select="./xcv:company"/>
+	<xsl:if test="$company/text()">
+	  <xsl:text>, </xsl:text>
+	</xsl:if>
+	<xsl:value-of select="$company"/>
+	<xsl:variable name="city" select="./xcv:location/xcv:city"/>
+	<xsl:if test="$city/text()">
+	  <xsl:text>, </xsl:text>
+	</xsl:if>
+	<xsl:value-of select="$city"/>
+	<xsl:variable name="country" select="./xcv:location/xcv:country"/>
+	<xsl:if test="$country/text()">
+	  <xsl:text> - </xsl:text>
+	</xsl:if>
+	<xsl:value-of select="$country"/>
+	<xsl:text>\\&#xA;</xsl:text>
+      </xsl:for-each>
+      <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- WORKS (realizations) AND WORKS (projects) -->
+  <xsl:template name="worksTemplate">
+    <xsl:param name="sectionTitle"/>
+    <xsl:param name="worksList"/>
+
+    <xsl:if test="$worksList">
+      <xsl:text>\section*{</xsl:text><xsl:value-of select="$sectionTitle"/><xsl:text>}&#xA;</xsl:text>
+      <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
+      <xsl:for-each select="$worksList">
+	<xsl:value-of select="./xcv:begin/xcv:year"/>
+	<xsl:variable name="end" select="./xcv:end/xcv:year"/>
+	<xsl:if test="$end/text()">
+	  <xsl:text>--</xsl:text>
+	</xsl:if>
+	<xsl:value-of select="$end"/><xsl:text>&amp;</xsl:text>
+	<xsl:value-of select="./xcv:title"/>
+	<xsl:variable name="metier" select="./xcv:metier"/>
+	<xsl:if test="$metier/text()">
+	  <xsl:text>(</xsl:text>
+	  <xsl:value-of select="$metier"/>
+	  <xsl:text>)</xsl:text>
+	</xsl:if>
+	<xsl:variable name="institute" select="./xcv:institute"/>
+	<xsl:if test="$institute/text()">
+	  <xsl:text>, </xsl:text>
+	  <xsl:value-of select="$institute"/>
+	</xsl:if>
+	<xsl:variable name="workstatus" select="./xcv:workstatus"/>
+	<xsl:if test="$workstatus/text()">
+	  <xsl:text>, </xsl:text>
+	  <xsl:value-of select="$workstatus"/>
+	</xsl:if>
+	<xsl:text>\\&#xA;</xsl:text>
+      </xsl:for-each>
+      <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- SKILLS (expertise) AND SKILLS (other) -->
+  <xsl:template name="skillsTemplate">
+    <xsl:param name="sectionTitle"/>
+    <xsl:param name="skillsByDomainList"/>
+
+    <xsl:if test="$skillsByDomainList">
+      <xsl:text>\section*{</xsl:text><xsl:value-of select="$sectionTitle"/><xsl:text>}&#xA;</xsl:text>
+      <xsl:text>\begin{tabular}{L!{\VRule}l}&#xA;</xsl:text>
+      <xsl:for-each select="$skillsByDomainList">
+	<xsl:value-of select="./@name"/><xsl:text>&amp;</xsl:text>
+	<xsl:for-each select="./xcv:skill">
+	  <xsl:if test="position()>1">
+	    <xsl:text>&amp;</xsl:text>
+	  </xsl:if>
+	  <xsl:variable name="title" select="./xcv:title"/>
+	  <xsl:value-of select="$title"/>
+	  <xsl:variable name="level" select="./xcv:level"/>
+	  <xsl:variable name="details" select="./xcv:details"/>
+	  <xsl:if test="$title/text() and ($level/text() or $details/text())">
+	    <xsl:text>: </xsl:text>
+	  </xsl:if>
+	  <xsl:value-of select="$level"/>
+	  <xsl:if test="$details/text()">
+	    <xsl:text>, </xsl:text>
+	  </xsl:if>
+	  <xsl:value-of select="$details"/>
+	  <xsl:text>\\&#xA;</xsl:text>
+	</xsl:for-each>
+	<xsl:text>&amp;\\&#xA;</xsl:text>
+      </xsl:for-each>
+      <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- EDUCATION (university) AND EDUCATION (certificates) -->
+  <xsl:template name="educationTemplate">
+    <xsl:param name="sectionTitle"/>
+    <xsl:param name="degreesList"/>
+
+    <xsl:if test="$degreesList">
+      <xsl:text>\section*{</xsl:text><xsl:value-of select="$sectionTitle"/><xsl:text>}&#xA;</xsl:text>
+      <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
+      <xsl:for-each select="$degreesList">
+	<xsl:value-of select="./xcv:begin/xcv:year"/>
+	<xsl:variable name="end" select="./xcv:end/xcv:year"/>
+	<xsl:if test="$end/text()">
+	  <xsl:text>--</xsl:text>
+	</xsl:if>
+	<xsl:value-of select="$end"/><xsl:text>&amp;</xsl:text>
+	<xsl:value-of select="./xcv:title"/>
+	<xsl:variable name="status" select="./xcv:status"/>
+	<xsl:if test="$status/text()">
+	  <xsl:text> (</xsl:text><xsl:value-of select="$status"/><xsl:text>)</xsl:text>
+	</xsl:if>
+	<xsl:variable name="institute" select="./xcv:institute"/>
+	<xsl:if test="$institute/text()">
+	  <xsl:text>, </xsl:text>
+	  <xsl:value-of select="$institute"/>
+	</xsl:if>
+	<xsl:variable name="city" select="./xcv:location/xcv:city"/>
+	<xsl:if test="$city/text()">
+	  <xsl:text>, </xsl:text>
+	  <xsl:value-of select="$city"/>
+	</xsl:if>
+	<xsl:variable name="country" select="./xcv:location/xcv:country"/>
+	<xsl:if test="$country/text()">
+	  <xsl:text> - </xsl:text>
+	  <xsl:value-of select="$country"/>
+	</xsl:if>
+	<xsl:text>\\&#xA;</xsl:text>
+      </xsl:for-each>
+      <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+    </xsl:if>
+  </xsl:template>
+
 <xsl:template match="xcv:cv">
 <xsl:text>
 \documentclass[10pt]{article}
@@ -19,13 +171,25 @@
 
 <!-- OWNER'S NAME AND QUALIFICATION -->
 <!-- these will be added by the \maketitle command -->
-<xsl:text>\title{\bfseries\Huge </xsl:text>
-<xsl:value-of select="xcv:identity/xcv:definitive/xcv:name/xcv:firstname"/>
-<xsl:text> </xsl:text>
-<xsl:value-of select="xcv:identity/xcv:definitive/xcv:name/xcv:lastname"/>
-<xsl:text>}&#xA;\author{</xsl:text>
-<xsl:value-of select="xcv:identity/xcv:evolving/xcv:qualification"/>
-<xsl:text>}&#xA;&#xA;</xsl:text>
+<xsl:variable name="firstname" select="xcv:identity/xcv:definitive/xcv:name/xcv:firstname"/>
+<xsl:if test="$firstname/text()">
+  <xsl:text>\title{\bfseries\Huge </xsl:text>
+  <xsl:value-of select="$firstname"/>
+
+  <xsl:variable name="lastname" select="xcv:identity/xcv:definitive/xcv:name/xcv:lastname"/>
+  <xsl:if test="$lastname/text()">
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="$lastname"/>
+  </xsl:if>
+  <xsl:text>}</xsl:text>
+
+  <xsl:variable name="qualification" select="xcv:identity/xcv:evolving/xcv:qualification"/>
+  <xsl:if test="$qualification/text()">
+    <xsl:text>\author{</xsl:text>
+    <xsl:value-of select="$qualification"/>
+    <xsl:text>}&#xA;&#xA;</xsl:text>
+  </xsl:if>
+</xsl:if>
 
 <xsl:text>
 \date{} %delete the date
@@ -40,191 +204,234 @@
 \vspace{1em}
 </xsl:text>
 
-  <!-- OWNER'S ADDRESS -->
+<!-- OWNER'S ADDRESS -->
 <xsl:text>\begin{minipage}[ht]{0.30\textwidth}&#xA;</xsl:text>
-<xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:appmisc"/>
-<xsl:text>, bat. </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:building"/>
-<xsl:text>, app. </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:appnum"/>
-<xsl:text>\\&#xA;</xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:road/xcv:rdnum"/>
-<xsl:text> </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:road/xcv:rdext"/>
-<xsl:text> </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:road/xcv:rdtype"/>
-<xsl:text> </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:road/xcv:rdname"/>
-<xsl:text>\\&#xA;</xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:zipcode"/>
-<xsl:text> </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:city"/>
-<xsl:text>, </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:country"/>
+<xsl:variable name="appmisc" select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:appmisc"/>
+<xsl:value-of select="$appmisc/text()"/>
+<xsl:variable name="bat" select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:building"/>
+<xsl:if test="$bat/text()">
+  <xsl:text>, bat. </xsl:text><xsl:value-of select="$bat"/>
+</xsl:if>
+<xsl:variable name="app" select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:appnum"/>
+<xsl:if test="$app/text()">
+  <xsl:text>, app. </xsl:text><xsl:value-of select="$app"/>
+</xsl:if>
+<xsl:if test="$appmisc/text() or $bat/text() or $app/text()">
+  <xsl:text>\\&#xA;</xsl:text>
+</xsl:if>
+<xsl:variable name="rdnum" select="xcv:identity/xcv:evolving/xcv:address/xcv:road/xcv:rdnum"/>
+<xsl:value-of select="$rdnum"/>
+<xsl:variable name="rdext" select="xcv:identity/xcv:evolving/xcv:address/xcv:road/xcv:rdext"/>
+<xsl:text> </xsl:text><xsl:value-of select="$rdext"/>
+<xsl:variable name="rdtype" select="xcv:identity/xcv:evolving/xcv:address/xcv:road/xcv:rdtype"/>
+<xsl:text> </xsl:text><xsl:value-of select="$rdtype"/>
+<xsl:variable name="rdname" select="xcv:identity/xcv:evolving/xcv:address/xcv:road/xcv:rdname"/>
+<xsl:text> </xsl:text><xsl:value-of select="$rdname"/>
+<xsl:if test="$rdnum/text() or $rdext/text() or $rdtype/text() or $rdname/text()">
+  <xsl:text>\\&#xA;</xsl:text>
+</xsl:if>
+<xsl:variable name="zipcode" select="xcv:identity/xcv:evolving/xcv:address/xcv:zipcode"/>
+<xsl:value-of select="$zipcode"/>
+<xsl:variable name="city" select="xcv:identity/xcv:evolving/xcv:address/xcv:city"/>
+<xsl:text> </xsl:text><xsl:value-of select="$city"/>
+<xsl:variable name="country" select="xcv:identity/xcv:evolving/xcv:address/xcv:country"/>
+<xsl:if test="($zipcode/text() or $city/text()) and $country/text()">
+  <xsl:text>, </xsl:text>
+</xsl:if>
+<xsl:value-of select="$country"/>
 <xsl:text>&#xA;\end{minipage}&#xA;</xsl:text>
 
   <!-- OWNER'S PICTURE -->
-
+<xsl:variable name="picture" select="./xcv:picture"/>
 <xsl:text>\begin{minipage}[ht]{0.30\textwidth}&#xA;</xsl:text>
-<xsl:text>\begin{center}
+<xsl:if test="$picture/text()">
+  <xsl:text>\begin{center}
   \includegraphics[width=0.30\textwidth,keepaspectratio]{</xsl:text>
-<xsl:value-of select="./xcv:picture"/>
-<xsl:text>}
+  <xsl:value-of select="$picture"/>
+  <xsl:text>}
 \end{center}</xsl:text>
+</xsl:if>
 <xsl:text>&#xA;\end{minipage}&#xA;</xsl:text>
 
   <!-- OWNER'S CONTACTS -->
 <xsl:text>\begin{minipage}[ht]{0.30\textwidth}&#xA;</xsl:text>
-<xsl:text>Nationalité </xsl:text><xsl:value-of select="xcv:identity/xcv:definitive/xcv:nationality"/>
-<xsl:text>\\&#xA;+</xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:phone/xcv:phonecode"/><xsl:text> </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:phone/xcv:phonenum"/>
-<xsl:text>\\&#xA;</xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:email"/>
+<xsl:variable name="nationality" select="xcv:identity/xcv:definitive/xcv:nationality"/>
+<xsl:if test="$nationality/text()">
+  <xsl:text>Nationalité </xsl:text><xsl:value-of select="$nationality"/>
+  <xsl:text>\\&#xA;</xsl:text>
+</xsl:if>
+<xsl:variable name="phonecode" select="xcv:identity/xcv:evolving/xcv:phone/xcv:phonecode"/>
+<xsl:if test="$phonecode/text()">
+  <xsl:text>+</xsl:text><xsl:value-of select="$phonecode"/><xsl:text> </xsl:text>
+</xsl:if>
+<xsl:variable name="phonenum" select="xcv:identity/xcv:evolving/xcv:phone/xcv:phonenum"/>
+<xsl:value-of select="$phonenum"/>
+<xsl:if test="$phonenum/text()">
+  <xsl:text>\\&#xA;</xsl:text>
+</xsl:if>
+<xsl:value-of select="xcv:identity/xcv:evolving/xcv:email"/>
 <xsl:text>&#xA;\end{minipage}&#xA;\vspace{20pt}&#xA;&#xA;</xsl:text>
 
   <!-- CV OBJECTIVE -->
-<xsl:text>\section*{Objectif}&#xA;</xsl:text>
-<xsl:value-of select="./xcv:objective"/>
+<xsl:variable name="objective" select="./xcv:objective"/>
+<xsl:if test="$objective/text()">
+  <xsl:text>\section*{Objectif}&#xA;</xsl:text>
+  <xsl:value-of select="$objective"/>
+</xsl:if>
 
   <!-- EXPERIENCE -->
-<xsl:text>&#xA;&#xA;\section*{Expérience Professionnelle}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:experience/xcv:position">
-  <xsl:value-of select="./xcv:begin/xcv:year"/><xsl:text>--</xsl:text><xsl:value-of select="./xcv:end/xcv:year"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:title"/><xsl:text>, </xsl:text><xsl:value-of select="./xcv:company"/><xsl:text>, </xsl:text><xsl:value-of select="./xcv:location/xcv:city"/><xsl:text> - </xsl:text><xsl:value-of select="./xcv:location/xcv:country"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:call-template name="jobsTemplate">
+    <xsl:with-param name="sectionTitle">
+      <xsl:text>Expérience Professionnelle</xsl:text>
+    </xsl:with-param>
+    <xsl:with-param name="positionsList" select="xcv:experience/xcv:position"/>
+  </xsl:call-template>
 
-  <!-- JOBS --><!-- Need for reuse of EXPERIENCE -->
-<xsl:text>\section*{Expériences annexes}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:jobs/xcv:position">
-  <xsl:value-of select="./xcv:begin/xcv:year"/><xsl:text>--</xsl:text><xsl:value-of select="./xcv:end/xcv:year"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:title"/><xsl:text>, </xsl:text><xsl:value-of select="./xcv:company"/><xsl:text>, </xsl:text><xsl:value-of select="./xcv:location/xcv:city"/><xsl:text> - </xsl:text><xsl:value-of select="./xcv:location/xcv:country"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <!-- JOBS -->
+  <xsl:call-template name="jobsTemplate">
+    <xsl:with-param name="sectionTitle">
+      <xsl:text>Expériences annexes</xsl:text>
+    </xsl:with-param>
+    <xsl:with-param name="positionsList" select="xcv:jobs/xcv:position"/>
+  </xsl:call-template>
 
   <!-- WORKS (realizations) -->
-<xsl:text>\section*{Travaux}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:works/xcv:realizations/xcv:realization">
-  <xsl:value-of select="./xcv:begin/xcv:year"/><xsl:text>--</xsl:text><xsl:value-of select="./xcv:end/xcv:year"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:title"/><xsl:text>(</xsl:text><xsl:value-of select="./xcv:domain"/><xsl:text>), </xsl:text><xsl:value-of select="./xcv:institute"/><xsl:text>, </xsl:text><xsl:value-of select="./xcv:workstatus"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:call-template name="worksTemplate">
+    <xsl:with-param name="sectionTitle">
+      <xsl:text>Travaux</xsl:text>
+    </xsl:with-param>
+    <xsl:with-param name="worksList" select="xcv:works/xcv:realizations/xcv:realization"/>
+  </xsl:call-template>
 
   <!-- WORKS (projects) --> <!-- Need for reuse of WORKS (realizations) -->
-<xsl:text>\section*{Projets}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:works/xcv:projects/xcv:project">
-  <xsl:value-of select="./xcv:begin/xcv:year"/><xsl:text>--</xsl:text><xsl:value-of select="./xcv:end/xcv:year"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:title"/><xsl:text>(</xsl:text><xsl:value-of select="./xcv:domain"/><xsl:text>), </xsl:text><xsl:value-of select="./xcv:institute"/><xsl:text>, </xsl:text><xsl:value-of select="./xcv:workstatus"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:call-template name="worksTemplate">
+    <xsl:with-param name="sectionTitle">
+      <xsl:text>Projets</xsl:text>
+    </xsl:with-param>
+    <xsl:with-param name="worksList" select="xcv:works/xcv:projects/xcv:project"/>
+  </xsl:call-template>
 
   <!-- SKILLS (expertise) -->
-<xsl:text>\section*{Compétences principales}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}l}&#xA;</xsl:text>
-<xsl:for-each select="xcv:skills/xcv:expertise/xcv:domain">
-  <xsl:value-of select="./@name"/><xsl:text>&amp;</xsl:text>
-  <xsl:for-each select="./xcv:skill">
-    <xsl:if test="position()>1">
-      <xsl:text>&amp;</xsl:text>
-    </xsl:if>
-    <xsl:value-of select="./xcv:title"/><xsl:text>: </xsl:text>
-    <xsl:value-of select="./xcv:level"/><xsl:text>, </xsl:text>
-    <xsl:value-of select="./xcv:details"/>
-    <xsl:text>\\&#xA;</xsl:text>
-  </xsl:for-each>
-    <xsl:text>&amp;\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:call-template name="skillsTemplate">
+    <xsl:with-param name="sectionTitle">
+      <xsl:text>Compétences principales</xsl:text>
+    </xsl:with-param>
+    <xsl:with-param name="skillsByDomainList" select="xcv:skills/xcv:expertise/xcv:domain"/>
+  </xsl:call-template>
 
-  <!-- SKILLS (other) --><!-- Need for reuse of SKILLS (expertise) -->
-<xsl:text>\section*{Autres Compétences}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:skills/xcv:other/xcv:domain">
-  <xsl:value-of select="./@name"/><xsl:text>&amp;</xsl:text>
-  <xsl:for-each select="./xcv:skill">
-    <xsl:value-of select="./xcv:title"/><xsl:text>, </xsl:text>
-    <xsl:value-of select="./xcv:level"/><xsl:text>, </xsl:text>
-    <xsl:value-of select="./xcv:details"/>
-    <xsl:text>\\&#xA;</xsl:text>
-  </xsl:for-each>
-    <xsl:text>&amp;\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <!-- SKILLS (other) -->
+  <xsl:call-template name="skillsTemplate">
+    <xsl:with-param name="sectionTitle">
+      <xsl:text>Autres Compétences</xsl:text>
+    </xsl:with-param>
+    <xsl:with-param name="skillsByDomainList" select="xcv:skills/xcv:other/xcv:domain"/>
+  </xsl:call-template>
 
   <!-- EDUCATION (university)-->
-<xsl:text>\section*{Cursus universitaire}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:education/xcv:degrees/xcv:degree">
-  <xsl:value-of select="./xcv:begin/xcv:year"/><xsl:text>--</xsl:text><xsl:value-of select="./xcv:end/xcv:year"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:title"/><xsl:text> (</xsl:text><xsl:value-of select="./xcv:status"/><xsl:text>), </xsl:text><xsl:value-of select="./xcv:institute"/><xsl:text>, </xsl:text><xsl:value-of select="./xcv:location/xcv:city"/><xsl:text> - </xsl:text><xsl:value-of select="./xcv:location/xcv:country"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:call-template name="educationTemplate">
+    <xsl:with-param name="sectionTitle">
+      <xsl:text>Cursus universitaire</xsl:text>
+    </xsl:with-param>
+    <xsl:with-param name="degreesList" select="xcv:education/xcv:degrees/xcv:degree"/>
+  </xsl:call-template>
 
-  <!-- EDUCATION (certificates)--><!-- Need for reuse of EDUCATION (university) -->
-<xsl:text>\section*{Certificats}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}</xsl:text>
-<xsl:for-each select="xcv:education/xcv:certificates/xcv:certificate">
-  <xsl:value-of select="./xcv:begin/xcv:year"/><xsl:text>--</xsl:text><xsl:value-of select="./xcv:end/xcv:year"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:title"/><xsl:text> (</xsl:text><xsl:value-of select="./xcv:status"/><xsl:text>), </xsl:text><xsl:value-of select="./xcv:institute"/><xsl:text>, </xsl:text><xsl:value-of select="./xcv:location/xcv:city"/><xsl:text> - </xsl:text><xsl:value-of select="./xcv:location/xcv:country"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <!-- EDUCATION (certificates)-->
+  <xsl:call-template name="educationTemplate">
+    <xsl:with-param name="sectionTitle">
+      <xsl:text>Certificats</xsl:text>
+    </xsl:with-param>
+    <xsl:with-param name="degreesList" select="xcv:education/xcv:certificates/xcv:certificate"/>
+  </xsl:call-template>
 
   <!-- LANGUAGES -->
-<xsl:text>\section*{Langues}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:languages/xcv:lang">
-  <xsl:value-of select="./xcv:title"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:level"/><xsl:text>, </xsl:text>
-  <xsl:value-of select="./xcv:details"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:text>\section*{Langues}&#xA;</xsl:text>
+  <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
+  <xsl:for-each select="xcv:languages/xcv:lang">
+    <xsl:value-of select="./xcv:title"/><xsl:text>&amp;</xsl:text>
+    <xsl:value-of select="./xcv:level"/>
+    <xsl:if test="./xcv:details/text()">
+      <xsl:text>, </xsl:text>
+      <xsl:value-of select="./xcv:details"/>
+    </xsl:if>
+    <xsl:text>\\&#xA;</xsl:text>
+  </xsl:for-each>
+  <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
 
   <!-- HONORS -->
-<xsl:text>\section*{Distinctions}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:honors/xcv:distinction">
-  <xsl:value-of select="./xcv:year"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:title"/><xsl:text>, </xsl:text>
-  <xsl:value-of select="./xcv:institute"/><xsl:text>, </xsl:text>
-  <xsl:value-of select="./xcv:details"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:text>\section*{Distinctions}&#xA;</xsl:text>
+  <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
+  <xsl:for-each select="xcv:honors/xcv:distinction">
+    <xsl:value-of select="./xcv:year"/><xsl:text>&amp;</xsl:text>
+    <xsl:value-of select="./xcv:title"/>
+    <xsl:if test="./xcv:institute/text()">
+      <xsl:text>, </xsl:text>
+      <xsl:value-of select="./xcv:institute"/>
+    </xsl:if>
+    <xsl:if test="./xcv:details/text()">
+      <xsl:text>, </xsl:text>
+      <xsl:value-of select="./xcv:details"/>
+    </xsl:if>
+    <xsl:text>\\&#xA;</xsl:text>
+  </xsl:for-each>
+  <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
 
   <!-- INTEREST -->
-<xsl:text>\section*{Centres d'intérêts}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:interest/xcv:item">
-  <xsl:value-of select="./xcv:title"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:details"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:text>\section*{Centres d'intérêts}&#xA;</xsl:text>
+  <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
+  <xsl:for-each select="xcv:interest/xcv:item">
+    <xsl:value-of select="./xcv:title"/><xsl:text>&amp;</xsl:text>
+    <xsl:value-of select="./xcv:details"/>
+    <xsl:text>\\&#xA;</xsl:text>
+  </xsl:for-each>
+  <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
 
   <!-- PUBLICATIONS -->
-<xsl:text>\section*{Publications}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:publications/xcv:publication">
-  <xsl:value-of select="./xcv:year"/><xsl:text>&amp;</xsl:text>
-  <xsl:text>"</xsl:text><xsl:value-of select="./xcv:title"/><xsl:text>", </xsl:text>
-  <xsl:value-of select="./xcv:editor"/><xsl:text> - </xsl:text><xsl:value-of select="./xcv:year"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:text>\section*{Publications}&#xA;</xsl:text>
+  <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
+  <xsl:for-each select="xcv:publications/xcv:publication">
+    <xsl:value-of select="./xcv:year"/><xsl:text>&amp;</xsl:text>
+    <xsl:text>"</xsl:text><xsl:value-of select="./xcv:title"/><xsl:text>"</xsl:text>
+    <xsl:if test="./xcv:title/text() and ./xcv:editor/text()">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="./xcv:editor"/>
+    <xsl:if test="./xcv:year/text()">
+      <xsl:text> - </xsl:text>
+      <xsl:value-of select="./xcv:year"/>
+    </xsl:if>
+    <xsl:text>\\&#xA;</xsl:text>
+  </xsl:for-each>
+  <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
 
   <!-- CONFERENCES -->
-<xsl:text>\section*{Conférences}&#xA;</xsl:text>
-<xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
-<xsl:for-each select="xcv:conferences/xcv:conference">
-  <xsl:value-of select="./xcv:year"/><xsl:text>&amp;</xsl:text>
-  <xsl:value-of select="./xcv:theme"/><xsl:text>, </xsl:text>
-  <xsl:text>"</xsl:text><xsl:value-of select="./xcv:title"/><xsl:text>", </xsl:text>
-  <xsl:value-of select="./xcv:institute"/><xsl:text>, </xsl:text>
-  <xsl:value-of select="./xcv:location/city"/><xsl:text> - </xsl:text><xsl:value-of select="./xcv:location/country"/><xsl:text>, </xsl:text>
-  <xsl:value-of select="./xcv:details"/>
-  <xsl:text>\\&#xA;</xsl:text>
-</xsl:for-each>
-<xsl:text>&#xA;\end{tabular}&#xA;&#xA;</xsl:text>
+  <xsl:text>\section*{Conférences}&#xA;</xsl:text>
+  <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
+  <xsl:for-each select="xcv:conferences/xcv:conference">
+    <xsl:value-of select="./xcv:year"/><xsl:text>&amp;</xsl:text>
+    <xsl:value-of select="./xcv:theme"/>
+    <xsl:if test="./xcv:theme/text() and ./xcv:title/text()">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+    <xsl:text>"</xsl:text><xsl:value-of select="./xcv:title"/><xsl:text>"</xsl:text>
+    <xsl:if test="./xcv:institute/text()">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="./xcv:institute"/>
+    <xsl:if test="./xcv:location/city/text()">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="./xcv:location/city"/>
+    <xsl:if test="./xcv:location/country/text()">
+      <xsl:text> - </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="./xcv:location/country"/>
+    <xsl:if test="./xcv:details/text()">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="./xcv:details"/>
+    <xsl:text>\\&#xA;</xsl:text>
+  </xsl:for-each>
+  <xsl:text>&#xA;\end{tabular}&#xA;&#xA;</xsl:text>
 
 <xsl:text>
 {\vspace{20pt}%\newline\newline

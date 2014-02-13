@@ -300,7 +300,7 @@
   <xs:complexType name="typePublication">
     <xs:all>
       <xs:element  name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
-      <xs:element  name="year" type="typeYear" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="year" type="typeYear" minOccurs="1" maxOccurs="1"/>
       <xs:element  name="editor" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element  name="authors" type="typeAuthors" minOccurs="0" maxOccurs="1"/>
     </xs:all>
@@ -310,7 +310,7 @@
     <xs:all>
       <xs:element  name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element  name="theme" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element  name="year" type="typeYear" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="year" type="typeYear" minOccurs="1" maxOccurs="1"/>
       <xs:element  name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
       <xs:element  name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element  name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
@@ -390,7 +390,7 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="typeDegree">
+  <xs:complexType name="typeDegree"> <!-- Exprimer que le type doit contenir au moins une des deux dates -->
     <xs:all>
       <xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
       <xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
@@ -407,7 +407,7 @@
       <xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
       <xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
       <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="domain" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="metier" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="technologies" type="typeTechnologies" minOccurs="0" maxOccurs="1"/>
       <xs:element name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="authors" type="typeAuthors" minOccurs="0" maxOccurs="1"/>
@@ -418,7 +418,6 @@
 
   <xs:complexType name="typeSkill">
     <xs:all>
-      <xs:element name="domain" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element name="level" type="typeLevel" minOccurs="0" maxOccurs="1"/>
       <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
