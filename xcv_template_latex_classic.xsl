@@ -36,7 +36,7 @@
 
 \begin{document}
 \maketitle
-\vspace{1em}&#xA;
+\vspace{1em}
 </xsl:text>
 
   <!-- OWNER'S ADDRESS -->
@@ -51,7 +51,7 @@
 <xsl:text>\\&#xA;</xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:zipcode"/>
 <xsl:text> </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:city"/>
 <xsl:text>, </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:country"/>
-<xsl:text>&#xA;\end{minipage}&#xA;&#xA;</xsl:text>
+<xsl:text>&#xA;\end{minipage}&#xA;</xsl:text>
 
   <!-- OWNER'S CONTACTS -->
 <xsl:text>\begin{minipage}[ht]{0.45\textwidth}&#xA;</xsl:text>

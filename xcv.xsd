@@ -134,6 +134,7 @@
     <xs:all>
       <xs:element name="cvlang" type="typeCVLang" minOccurs="0" maxOccurs="1"/>
       <xs:element name="objective" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="picture" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
       <xs:element name="identity" type="typeIdentity" minOccurs="1" maxOccurs="1"/>
       <xs:element name="education" type="typeEducation" minOccurs="0" maxOccurs="1"/>
       <xs:element name="experience" type="typeJobs" minOccurs="0" maxOccurs="1"/>
