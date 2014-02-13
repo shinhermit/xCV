@@ -306,7 +306,7 @@
 	  <xcv:details>Administration de base, programmation.</xcv:details>
 	</xcv:skill>
       </xcv:domain>
-      <xcv:domain name="Web development">
+      <xcv:domain name="Développement web">
 	<xcv:skill>
 	  <xcv:title>PHP</xcv:title>
 	  <xcv:level>medium</xcv:level>
@@ -331,7 +331,7 @@
     </xcv:expertise>
 
     <xcv:other>
-      <xcv:domain name="Web development">
+      <xcv:domain name="Développement web">
 	<xcv:skill>
 	  <xcv:title>WebGL, Three.js</xcv:title>
 	  <xcv:level>beginner</xcv:level>
