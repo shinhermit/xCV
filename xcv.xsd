@@ -45,6 +45,7 @@
   <xs:simpleType name="typeWorkstatus">
     <xs:restriction base="xs:string">
       <xs:enumeration value="in progress"/>
+      <xs:enumeration value="on standby"/>
       <xs:enumeration value="released"/>
       <xs:enumeration value="activly maintained"/>
       <xs:enumeration value="abandonned"/>
@@ -305,22 +306,23 @@
   </xs:complexType>
 
   <xs:complexType name="typeConference">
-    <xs:sequence>
+    <xs:all>
       <xs:element  name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element  name="theme" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element  name="year" type="typeYear" minOccurs="0" maxOccurs="1"/>
       <xs:element  name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
       <xs:element  name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element  name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
 
   <xs:complexType name="typeDistinction"> <!-- could inherit "typeConference", but not logaicaly correct -->
-    <xs:sequence>
+    <xs:all>
       <xs:element  name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element  name="year" type="typeYear" minOccurs="0" maxOccurs="1"/>
       <xs:element  name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element  name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
 
 
@@ -400,7 +402,7 @@
   </xs:complexType>
 
   <xs:complexType name="typeWork">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
       <xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
       <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
@@ -410,16 +412,16 @@
       <xs:element name="authors" type="typeAuthors" minOccurs="0" maxOccurs="1"/>
       <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="workstatus" type="typeWorkstatus" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
 
   <xs:complexType name="typeSkill">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="domain" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element name="level" type="typeLevel" minOccurs="0" maxOccurs="1"/>
       <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
 
   <xs:complexType name="typeAuthors">

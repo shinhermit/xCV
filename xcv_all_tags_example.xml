@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xcv:cv xmlns:xcv="http://dje.josuah.aron/09/05/1983/xcv">
+  <xcv:cvlang>fr</xcv:cvlang>
+  <xcv:objective>Stage de 3 mois - développement d'applications.</xcv:objective>
+
+  <xcv:identity>
+    <xcv:definitive>
+      <xcv:name>
+	<xcv:firstname>Mitsu</xcv:firstname>
+	<xcv:lastname>Irato</xcv:lastname>
+	<xcv:surnames>
+	  <xcv:surname>Shinobi</xcv:surname>
+	  <xcv:surname>Sama</xcv:surname>
+	</xcv:surnames>
+      </xcv:name>
+
+      <xcv:birthdate>
+	<xcv:year>1783</xcv:year>
+	<xcv:month>08</xcv:month>
+	<xcv:day>04</xcv:day>
+      </xcv:birthdate>
+
+      <xcv:birthplace>
+	<xcv:country>Nigéria</xcv:country>
+	<xcv:state>Kogi</xcv:state>
+	<xcv:city>Lokoja</xcv:city>
+      </xcv:birthplace>
+
+      <xcv:nationality>japonaise</xcv:nationality>
+    </xcv:definitive>
+
+    <xcv:evolving>
+      <xcv:qualification>Ingénieur - développeur</xcv:qualification>
+      <xcv:address>
+	<xcv:country>USA</xcv:country>
+	<xcv:state>Californie</xcv:state>
+	<xcv:department>Modoc</xcv:department>
+	<xcv:city>Alturas</xcv:city>
+	<xcv:road>
+	  <xcv:rdtype>rue</xcv:rdtype>
+	  <xcv:rdname>de la grande bataille féodale</xcv:rdname>
+	  <xcv:rdnum>1</xcv:rdnum>
+	  <xcv:rdext>bis</xcv:rdext> <!-- bis, ter,... -->
+	</xcv:road>
+	<xcv:appartment>
+	  <xcv:appnum>21</xcv:appnum>
+	  <xcv:building>C</xcv:building>
+	  <xcv:appmisc>Résidence du Fou</xcv:appmisc>
+	</xcv:appartment>
+	<xcv:zipcode>75000</xcv:zipcode>
+      </xcv:address>
+
+      <xcv:phone>
+	<xcv:phonecode>1</xcv:phonecode>
+	<xcv:phonenum>999999999</xcv:phonenum>
+      </xcv:phone>
+      <xcv:email>mitsu.irato@samourai.com</xcv:email>
+      <xcv:online>
+	<xcv:site>
+	  <xcv:title>Dépot git</xcv:title>
+	  <xcv:url>https://github.com/shinhermit?tab=repositories</xcv:url>
+	  <xcv:url>https://github.com/shinhermit</xcv:url>
+	</xcv:site>
+      </xcv:online>
+    </xcv:evolving>
+  </xcv:identity>
+
+  <xcv:education>
+    <xcv:degrees>
+      <xcv:degree>
+	<xcv:begin>
+	  <xcv:year>2013</xcv:year>
+	</xcv:begin>
+	<xcv:end>
+	  <xcv:year>2015</xcv:year>
+	</xcv:end>
+	<xcv:title>Master Technologies de l'IA</xcv:title>
+	<xcv:institute>Université de Paris</xcv:institute>
+	<xcv:location>
+	  <xcv:country>France</xcv:country>
+	  <xcv:city>Grenoble</xcv:city>
+	</xcv:location>
+	<xcv:status>running</xcv:status>
+	<xcv:details></xcv:details>
+      </xcv:degree>
+      <xcv:degree>
+	<xcv:begin>
+	  <xcv:year>2010</xcv:year>
+	</xcv:begin>
+	<xcv:end>
+	  <xcv:year>2013</xcv:year>
+	</xcv:end>
+	<xcv:title>License Informatique</xcv:title>
+	<xcv:institute>Université de Grenoble</xcv:institute>
+	<xcv:location>
+	  <xcv:country>France</xcv:country>
+	  <xcv:city>Paris</xcv:city>
+	</xcv:location>
+	<xcv:status>passed</xcv:status>
+	<xcv:details></xcv:details>
+      </xcv:degree>
+    </xcv:degrees>
+
+    <xcv:certificates>
+      <xcv:certificate>
+	<xcv:begin>
+	  <xcv:year>1999</xcv:year>
+	  <xcv:month>01</xcv:month>
+	</xcv:begin>
+	<xcv:end>
+	  <xcv:year>1999</xcv:year>
+	  <xcv:month>06</xcv:month>
+	</xcv:end>
+	<xcv:title>Cisco</xcv:title>
+	<xcv:institute>Cisco</xcv:institute>
+	<xcv:location>
+	  <xcv:country>Thaïlande</xcv:country>
+	  <xcv:city>Bangkok</xcv:city>
+	</xcv:location>
+	<xcv:details>Advanced Cisco routers management</xcv:details>
+      </xcv:certificate>
+    </xcv:certificates>
+  </xcv:education>
+
+  <xcv:experience>
+    <xcv:position>
+      <xcv:begin>
+	<xcv:year>2000</xcv:year>
+      </xcv:begin>
+      <xcv:end>
+	<xcv:year>2005</xcv:year>
+      </xcv:end>
+      <xcv:title>Chef analyste</xcv:title>
+      <xcv:company>NSA</xcv:company>
+      <xcv:location>
+	<xcv:country>Chine</xcv:country>
+	<xcv:city>Tokio</xcv:city>
+      </xcv:location>
+      <xcv:details>Hacking avancé sur puce AVR</xcv:details>
+    </xcv:position>
+  </xcv:experience>
+
+  <xcv:jobs> <!-- part time jobs, summer jobs, etc. -->
+    <xcv:position>
+      <xcv:begin>
+	<xcv:year>2011</xcv:year>
+	<xcv:month>10</xcv:month>
+      </xcv:begin>
+      <xcv:end>
+	<xcv:year>2013</xcv:year>
+	<xcv:month>12</xcv:month>
+      </xcv:end>
+      <xcv:title>Barman</xcv:title>
+      <xcv:company>Station des artistes</xcv:company>
+      <xcv:location>
+	<xcv:country>Allemagne</xcv:country>
+	<xcv:city>Munich</xcv:city>
+      </xcv:location>
+      <xcv:details>Acquis résistance accrue à la marijuana</xcv:details>
+    </xcv:position>
+    <xcv:position>
+      <xcv:begin>
+	<xcv:year>2011</xcv:year>
+	<xcv:month>09</xcv:month>
+      </xcv:begin>
+      <xcv:end>
+	<xcv:year>2011</xcv:year>
+	<xcv:month>10</xcv:month>
+      </xcv:end>
+      <xcv:title>Employé polyvalent</xcv:title>
+      <xcv:company>Mac Donalds</xcv:company>
+      <xcv:location>
+	<xcv:country>Russie</xcv:country>
+	<xcv:city>Moscou</xcv:city>
+      </xcv:location>
+      <xcv:details>Maîtrise des sandwichs trop gras</xcv:details>
+    </xcv:position>
+  </xcv:jobs>
+
+  <xcv:works> <!--Réalisations, travaux, projets en cours-->
+    <xcv:realizations>
+      <xcv:realization>
+	<xcv:begin>
+	  <xcv:year>2014</xcv:year>
+	  <xcv:month>02</xcv:month>
+	</xcv:begin>
+	<xcv:end>
+	  <xcv:year>2014</xcv:year>
+	  <xcv:month>03</xcv:month>
+	</xcv:end>
+	<xcv:title>xCV</xcv:title>
+	<xcv:domain>Composition de document</xcv:domain>
+	<xcv:technologies>
+	  <xcv:tech>
+	    <xcv:title>XML</xcv:title>
+	    <xcv:details>XSD, XSLT</xcv:details>
+	  </xcv:tech>
+	  <xcv:tech>
+	    <xcv:title>Python</xcv:title>
+	    <xcv:details>PySide, Python core</xcv:details>
+	  </xcv:tech>
+	</xcv:technologies>
+	<xcv:institute>Skynet</xcv:institute>
+	<xcv:authors>
+	  <xcv:author>
+	    <xcv:name>
+	      <xcv:firstname>Mistu</xcv:firstname>
+	      <xcv:lastname>Irato</xcv:lastname>
+	    </xcv:name>
+	    <xcv:position>
+	      <xcv:title>Employé municipal</xcv:title>
+	      <xcv:company>Ville de Paris</xcv:company>
+	      <xcv:location>
+		<xcv:country>France</xcv:country>
+		<xcv:city>Paris</xcv:city>
+	      </xcv:location>
+	    </xcv:position>
+	  </xcv:author>
+	</xcv:authors>
+	<xcv:workstatus>in progress</xcv:workstatus>
+	<xcv:details>Séparer la présentation d'un CV de sa construction (données)</xcv:details>
+      </xcv:realization>
+    </xcv:realizations>
+
+    <xcv:projects>
+      <xcv:project>
+	<xcv:begin>
+	  <xcv:year>2013</xcv:year>
+	</xcv:begin>
+	<xcv:end>
+	  <xcv:year>2014</xcv:year>
+	</xcv:end>
+	<xcv:title>Réseau neuronal</xcv:title>
+	<xcv:domain>IA</xcv:domain>
+	<xcv:technologies>
+	  <xcv:tech>
+	    <xcv:title>C++</xcv:title>
+	    <xcv:details>C++, Graphes</xcv:details>
+	  </xcv:tech>
+	</xcv:technologies>
+	<xcv:institute></xcv:institute>
+	<xcv:authors>
+	  <xcv:author>
+	    <xcv:name>
+	      <xcv:firstname>Mitsu</xcv:firstname>
+	      <xcv:lastname>Irato</xcv:lastname>
+	    </xcv:name>
+	    <xcv:position>
+	      <xcv:title>Employé municipal</xcv:title>
+	      <xcv:company>Ville de Paris</xcv:company>
+	      <xcv:location>
+		<xcv:country>France</xcv:country>
+		<xcv:city>Paris</xcv:city>
+	      </xcv:location>
+	    </xcv:position>
+	  </xcv:author>
+	  <xcv:author>
+	    <xcv:name>
+	      <xcv:firstname>Le Grand</xcv:firstname>
+	      <xcv:lastname>Maître</xcv:lastname>
+	    </xcv:name>
+	  </xcv:author>
+	</xcv:authors>
+	<xcv:workstatus>on standby</xcv:workstatus>
+	<xcv:details>Projet à reprendre dans les mois à venir</xcv:details>
+      </xcv:project>
+    </xcv:projects>
+  </xcv:works>
+
+  <xcv:skills> <!-- Compétences -->
+    <xcv:expertise>
+      <xcv:domain name="Programmation">
+	<xcv:skill>
+	  <xcv:title>C++, Qt</xcv:title>
+	  <xcv:level>medium</xcv:level>
+	  <xcv:details>3 ans d'expérience</xcv:details>
+	</xcv:skill>
+	<xcv:skill>
+	  <xcv:title>Java</xcv:title>
+	  <xcv:level>medium</xcv:level>
+	  <xcv:details></xcv:details>
+	</xcv:skill>
+	<xcv:skill>
+	  <xcv:title>C</xcv:title>
+	  <xcv:level>medium</xcv:level>
+	  <xcv:details></xcv:details>
+	</xcv:skill>
+	<xcv:skill>
+	  <xcv:title>Python</xcv:title>
+	  <xcv:level>beginner</xcv:level>
+	  <xcv:details></xcv:details>
+	</xcv:skill>
+      </xcv:domain>
+      <xcv:domain name="Bases de données">
+	<xcv:skill>
+	  <xcv:title>Oracle, MySql, Access</xcv:title>
+	  <xcv:level>medium</xcv:level>
+	  <xcv:details></xcv:details>
+	</xcv:skill>
+      </xcv:domain>
+      <xcv:domain name="Réseaux, systèmes distribués">
+	<xcv:skill>
+	  <xcv:title></xcv:title>
+	  <xcv:level>medium</xcv:level>
+	  <xcv:details>Administration de base, programmation.</xcv:details>
+	</xcv:skill>
+      </xcv:domain>
+      <xcv:domain name="Web development">
+	<xcv:skill>
+	  <xcv:title>PHP</xcv:title>
+	  <xcv:level>medium</xcv:level>
+	  <xcv:details>4 ans d'expérience</xcv:details>
+	</xcv:skill>
+	<xcv:skill>
+	  <xcv:title>HTML, XML, CSS</xcv:title>
+	  <xcv:level>medium</xcv:level>
+	  <xcv:details></xcv:details>
+	</xcv:skill>
+	<xcv:skill>
+	  <xcv:title>JavaScript, JQuery</xcv:title>
+	  <xcv:level>beginner</xcv:level>
+	  <xcv:details></xcv:details>
+	</xcv:skill>
+	<xcv:skill>
+	  <xcv:title>Pyramid, Zend</xcv:title>
+	  <xcv:level>beginner</xcv:level>
+	  <xcv:details></xcv:details>
+	</xcv:skill>
+      </xcv:domain>
+    </xcv:expertise>
+
+    <xcv:other>
+      <xcv:domain name="Web development">
+	<xcv:skill>
+	  <xcv:title>WebGL, Three.js</xcv:title>
+	  <xcv:level>beginner</xcv:level>
+	  <xcv:details>Réalisé: jeu 3D stunt pong</xcv:details>
+	</xcv:skill>
+      </xcv:domain>
+      <xcv:domain name="Scripting">
+	<xcv:skill>
+	  <xcv:title>Bash</xcv:title>
+	  <xcv:level>beginner</xcv:level>
+	  <xcv:details></xcv:details>
+	</xcv:skill>
+      </xcv:domain>
+      <xcv:domain name="CGI">
+	<xcv:skill>
+	  <xcv:title>Photoshop, 3dsmax, Gimp, after effect, Premiere</xcv:title>
+	  <xcv:level>beginner</xcv:level>
+	  <xcv:details></xcv:details>
+	</xcv:skill>
+      </xcv:domain>
+      <xcv:domain name="Suites bureautique">
+	<xcv:skill>
+	  <xcv:title>MS office / Libre Office</xcv:title>
+	  <xcv:level>medium</xcv:level>
+	  <xcv:details>J'étais obligé</xcv:details>
+	</xcv:skill>
+      </xcv:domain>
+    </xcv:other>
+  </xcv:skills>
+
+  <xcv:languages>
+    <xcv:lang>
+      <xcv:title>Français</xcv:title>
+      <xcv:level>advanced</xcv:level>
+      <xcv:details></xcv:details>
+    </xcv:lang>
+    <xcv:lang>
+      <xcv:title>Anglais</xcv:title>
+      <xcv:level>medium</xcv:level>
+      <xcv:details>Score TOEIC (décembre 2011): 1000/990</xcv:details>
+    </xcv:lang>
+    <xcv:lang>
+      <xcv:title>Allemand</xcv:title>
+      <xcv:level>beginner</xcv:level>
+      <xcv:details></xcv:details>
+    </xcv:lang>
+  </xcv:languages>
+
+  <xcv:interest>
+    <xcv:item>
+      <xcv:title>Sport</xcv:title>
+      <xcv:details>vélo, tennis, basketball</xcv:details>
+    </xcv:item>
+    <xcv:item>
+      <xcv:title>Écriture, réalisation</xcv:title>
+      <xcv:details>textes courts, histoires courtes, scénario, animation 3D, films</xcv:details>
+    </xcv:item>
+  </xcv:interest>
+
+  <xcv:publications>
+    <xcv:publication>
+      <xcv:year>2020</xcv:year>
+      <xcv:title>Pourquoi les robots ont gagné la guerre?</xcv:title>
+      <xcv:editor>Skynet</xcv:editor>
+      <xcv:authors>
+	<xcv:author>
+	  <xcv:name>
+	    <xcv:firstname>Mitsu</xcv:firstname>
+	    <xcv:lastname>Irato</xcv:lastname>
+	  </xcv:name>
+	</xcv:author>
+	<xcv:author>
+	  <xcv:name>
+	    <xcv:firstname>Le Grand</xcv:firstname>
+	    <xcv:lastname>Maître</xcv:lastname>
+	  </xcv:name>
+	</xcv:author>
+      </xcv:authors>
+    </xcv:publication>
+  </xcv:publications>
+
+  <xcv:conferences>
+    <xcv:conference>
+      <xcv:year>2021</xcv:year>
+      <xcv:theme>IA vs I simple</xcv:theme>
+      <xcv:title>Comment battre les robots?</xcv:title>
+      <xcv:location>
+	<xcv:country>Guinée</xcv:country>
+	<xcv:city>Kindia</xcv:city>
+      </xcv:location>
+      <xcv:institute>Skynet</xcv:institute>
+      <xcv:details>Conférence réservée au public non augmenté</xcv:details>
+    </xcv:conference>
+  </xcv:conferences>
+
+  <xcv:honors> <!-- Honors and Awards -->
+    <xcv:distinction>
+      <xcv:year>2018</xcv:year>
+      <xcv:title>Père de l'IA</xcv:title>
+      <xcv:institute>Fondation Nobel</xcv:institute>
+      <xcv:details>En reconnaissance de l'apport décisif au domaine de l'IA, aboutissant à l'IA</xcv:details>
+    </xcv:distinction>
+  </xcv:honors>
+</xcv:cv>
