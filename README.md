@@ -11,6 +11,10 @@
 3. A tool to help entering the data of the résume, and hide the mechanics behing.
 4. An example of a résume, presented with the complete set of the XML elements defined in the dialect.
 
+##Note
+One can use the W3C validator to check the schema and the example:
+http://www.utilities-online.info/xsdvalidation/
+
 # Todo
 * Add existence condition on the sections of the résume.
 * Add a placeholder for a picture.

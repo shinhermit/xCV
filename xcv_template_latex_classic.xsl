@@ -11,6 +11,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 %\usepackage[T1]{fontenc}
+\usepackage{graphicx}
 
 \usepackage{array, xcolor, lipsum, bibentry}
 \usepackage[margin=3cm]{geometry}&#xA;&#xA;
@@ -40,7 +41,7 @@
 </xsl:text>
 
   <!-- OWNER'S ADDRESS -->
-<xsl:text>\begin{minipage}[ht]{0.45\textwidth}&#xA;</xsl:text>
+<xsl:text>\begin{minipage}[ht]{0.30\textwidth}&#xA;</xsl:text>
 <xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:appmisc"/>
 <xsl:text>, bat. </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:building"/>
 <xsl:text>, app. </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:appnum"/>
@@ -53,8 +54,18 @@
 <xsl:text>, </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:address/xcv:country"/>
 <xsl:text>&#xA;\end{minipage}&#xA;</xsl:text>
 
+  <!-- OWNER'S PICTURE -->
+
+<xsl:text>\begin{minipage}[ht]{0.30\textwidth}&#xA;</xsl:text>
+<xsl:text>\begin{center}
+  \includegraphics[width=0.30\textwidth,keepaspectratio]{</xsl:text>
+<xsl:value-of select="./xcv:picture"/>
+<xsl:text>}
+\end{center}</xsl:text>
+<xsl:text>&#xA;\end{minipage}&#xA;</xsl:text>
+
   <!-- OWNER'S CONTACTS -->
-<xsl:text>\begin{minipage}[ht]{0.45\textwidth}&#xA;</xsl:text>
+<xsl:text>\begin{minipage}[ht]{0.30\textwidth}&#xA;</xsl:text>
 <xsl:text>Nationalité </xsl:text><xsl:value-of select="xcv:identity/xcv:definitive/xcv:nationality"/>
 <xsl:text>\\&#xA;+</xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:phone/xcv:phonecode"/><xsl:text> </xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:phone/xcv:phonenum"/>
 <xsl:text>\\&#xA;</xsl:text><xsl:value-of select="xcv:identity/xcv:evolving/xcv:email"/>
