@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://dje.josuah.aron/09/05/1983/xcv"
+           xmlns="http://dje.josuah.aron/09/05/1983/xcv"
+           elementFormDefault="qualified">
+
+  <!-- **************** De la documentation ***************** -->
+  <xs:annotation>
+    <!-- Pour les humains -->
+    <xs:documentation>
+      <p>Ce schéma fournit des éléments pour représenter les données d'un CV (Curriculum Vitea)</p>
+      <p>Pour être pertinent, ce petit dialecte doit être associé à une feuille XSL (programme XSLT)</p>
+      <p>Nous avons développé une feuille de transformation vers un document Latex.</p>
+      <p>Éléments de haut niveau:</p>
+      <ul>
+	<li>cv (racine)</li>
+	<li>identity: section qui permet de décrirre l'identité de l'individu</li>
+	<li>education: section qui permet de décrire le cursus scolaire de l'individu</li>
+	<li>experience: section qui permet de décrire l'expérience professionnelle de l'individu dans son domaine d'expertise.</li>
+	<li>jobs: section qui permet de décrire l'expérience professionnelle de l'individu dans des domaines connexes (emplois à mi-temps, travail d'été, petits boulots, etc.)</li>
+	<li>works: section qui permet de présenter les travaux de l'individu. Section très utile pour les personnes travaillant dans des domaines techniques. Permet de présenter les travaux réaliser en dehors d'un mission officielle.</li>
+	<li>skills: section quib permet de présenter les compétences de l'individu.</li>
+	<li>languages: section qui permet d'énnoncer les langues pratiquées par l'individu.</li>
+	<li>interest: section qui permet de décrire les centres d'intérêts de l'individu.</li>
+	<li>publications: section qui permet de présenter les éventuelles publication dont l'individu est auteur ou auxquelles il a pris part.</li>
+	<li>conferences: section permettant de présenter les conférence qu'aurait présenter l'individu ou auxquelles il aurait participé.</li>
+	<li>honors: section permettant de présenter les prix, récompenses et autres distinctions qu'aurait obtenu l'individu.</li>
+      </ul>
+      <p>Autres éléments: à faire.</p>
+    </xs:documentation>
+
+    <!-- Pour les machines: Dublin core -->
+    <xs:appinfo xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <dc:creator>Josuah Aron (mailto:josuah.aron@gmail.com)</dc:creator>
+      <dc:date>2014-02-11</dc:date>
+      <dc:subject>XML,cv,curriculum,vitea,dialecte</dc:subject>
+      <dc:description>
+	Ce schéma permet de décrire les données contenu dans un cv (curriculum vitea).
+      </dc:description>
+    </xs:appinfo>
+  </xs:annotation>
+
+
+  <!-- ***************** Définition des types simples ***************** -->
+  <xs:simpleType name="typeWorkstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="in progress"/>
+      <xs:enumeration value="released"/>
+      <xs:enumeration value="activly maintained"/>
+      <xs:enumeration value="abandonned"/>
+      <xs:enumeration value="obsolete"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeDegreeStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="running"/>
+      <xs:enumeration value="passed"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="beginner"/>
+      <xs:enumeration value="medium"/>
+      <xs:enumeration value="advanced"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeCVLang">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="fr"/>
+      <xs:enumeration value="en"/>
+      <xs:enumeration value="de"/>
+      <xs:enumeration value="es"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeSimplePhone">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\+]{0,1}[0-9]{3}-[0-9]{7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="typeEmail"> 
+    <xs:restriction base="xs:string"> 
+      <xs:pattern value="[^@]+@[^\.]+\..+"/> 
+    </xs:restriction> 
+  </xs:simpleType> 
+
+  <xs:simpleType name="typeYear"> 
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="01"/>
+      <xs:maxInclusive value="9999"/>
+    </xs:restriction>
+  </xs:simpleType> 
+
+  <xs:simpleType name="typeMonth"> 
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="01"/>
+      <xs:maxInclusive value="12"/>
+    </xs:restriction>
+  </xs:simpleType> 
+
+  <xs:simpleType name="typeDay"> 
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="01"/>
+      <xs:maxInclusive value="31"/>
+    </xs:restriction>
+  </xs:simpleType> 
+
+  <xs:simpleType name="typeHour"> 
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="24"/>
+    </xs:restriction>
+  </xs:simpleType> 
+
+  <xs:simpleType name="typeMinute"> 
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="60"/>
+    </xs:restriction>
+  </xs:simpleType> 
+
+  <xs:simpleType name="typeSecond"> 
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="60"/>
+    </xs:restriction>
+  </xs:simpleType> 
+
+  <!-- ***************** Définition des types composés ***************** -->
+  <!-- **** La racine **** -->
+  <xs:complexType name="cvRoot">
+    <xs:all>
+      <xs:element name="cvlang" type="typeCVLang" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="objective" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="identity" type="typeIdentity" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="education" type="typeEducation" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="experience" type="typeJobs" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="jobs" type="typeJobs" minOccurs="0" maxOccurs="1"/> <!-- part time jobs, summer jobs, etc. -->
+      <xs:element name="works" type="typeWorks" minOccurs="0" maxOccurs="1"/> <!--Réalisations, travaux, projets en cours-->
+      <xs:element name="skills" type="typeSkills" minOccurs="0" maxOccurs="1"/>  <!-- Compétences -->
+      <xs:element name="languages" type="typeLanguages" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="interest" type="typeInterest" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="publications" type="typePublications" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="conferences" type="typeConferences" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="honors" type="typeHonors" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <!-- **** Niveau 1 **** -->
+  <xs:complexType name="typeIdentity">
+    <xs:sequence>
+      <xs:element name="definitive" type="typeDefinitiveIdentity" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="evolving" type="typeEvolvingIdentity" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeEducation"> <!-- raaa: Exprimer que l'élément ne doit pas être vide ET doit contenir au moins l'un des deux fils-->
+    <xs:sequence>
+      <xs:element name="degrees" type="typeEducationDegrees" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="certificates" type="typeEducationCertificates" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeJobs">
+    <xs:sequence>
+      <xs:element name="position" type="typeJobPosition" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeWorks"> <!-- raaa: Exprimer que l'élément ne doit pas être vide ET doit contenir au moins l'un des deux fils-->
+    <xs:all>
+      <xs:element name="realizations" type="typeWorkRealizations" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="projects" type="typeWorkProjects" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="typeSkills">
+    <xs:sequence>
+      <xs:element name="expertise" type="typeSkillsList" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="other" type="typeSkillsList" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeLanguages">
+    <xs:sequence>
+      <xs:element name="lang" type="typeLang" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeInterest">
+    <xs:sequence>
+      <xs:element name="item" type="typeInterestItem" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typePublications">
+    <xs:sequence>
+      <xs:element name="publication" type="typePublication" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeConferences">
+    <xs:sequence>
+      <xs:element name="conference" type="typeConference" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeHonors">
+    <xs:sequence>
+      <xs:element name="distinction" type="typeDistinction" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- **** Niveau 2 **** -->
+  <xs:complexType name="typeDefinitiveIdentity">
+    <xs:all>
+      <xs:element name="name" type="typeName" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="birthdate" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="birthplace" type="typeAddress" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="nationality" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="typeEvolvingIdentity">
+    <xs:sequence>
+      <xs:element name="qualification" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="address" type="typeAddress" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="phone" type="typePhone" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="email" type="typeEmail" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="online" type="typeOnline" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeEducationDegrees">
+    <xs:sequence>
+      <xs:element name="degree" type="typeDegree" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeEducationCertificates">
+    <xs:sequence>
+      <xs:element name="certificate" type="typeDegree" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeJobPosition">
+    <xs:all>
+      <xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="company" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="typeWorkRealizations">
+    <xs:sequence>
+      <xs:element name="realization" type="typeWork" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeWorkProjects">
+    <xs:sequence>
+      <xs:element name="project" type="typeWork" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeSkillsList">
+    <xs:sequence>
+      <xs:element name="domain" minOccurs="1" maxOccurs="unbounded">
+	<xs:complexType>
+	  <xs:sequence>
+	    <xs:element  name="skill" type="typeSkill" minOccurs="1" maxOccurs="unbounded"/>
+	  </xs:sequence>
+	  <xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeLang">
+    <xs:all>
+      <xs:element  name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element  name="level" type="typeLevel" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="typeInterestItem">
+    <xs:sequence>
+      <xs:element  name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element  name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typePublication">
+    <xs:all>
+      <xs:element  name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element  name="year" type="typeYear" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="editor" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="authors" type="typeAuthors" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="typeConference">
+    <xs:sequence>
+      <xs:element  name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element  name="year" type="typeYear" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeDistinction"> <!-- could inherit "typeConference", but not logaicaly correct -->
+    <xs:sequence>
+      <xs:element  name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element  name="year" type="typeYear" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- **** Niveau 3 **** -->
+  <xs:complexType name="typeName">
+    <xs:sequence>
+      <xs:element  name="firstname" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element  name="lastname" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="surnames" minOccurs="0" maxOccurs="1">
+	<xs:complexType>
+	<xs:sequence>
+	  <xs:element name="surname" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+	</xs:sequence>
+	</xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeDate"> <!-- raaa: exprimer que l'élément ne doit pas être vide (au moins un fils, quelconque parmis ceux listés) -->
+    <xs:sequence>
+      <xs:element name="year" type="typeYear" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="month" type="typeMonth" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="day" type="typeDay" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="hour" type="typeHour" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="minutes" type="typeMinute" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="seconds" type="typeSecond" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeAddress"> <!-- raaa: exprimer que l'élément ne doit pas être vide (au moins un fils, quelconque parmis ceux listés) -->
+    <xs:sequence>
+      <xs:element  name="country" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="state" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="department" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="city" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="road" type="typeRoad" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="appartment" type="typeAppartment" minOccurs="0" maxOccurs="1"/>
+      <xs:element  name="zipcode" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typePhone">
+    <xs:sequence>
+      <xs:element  name="phonecode" minOccurs="0" maxOccurs="1">
+	<xs:simpleType>
+	  <xs:restriction base="xs:positiveInteger">
+	    <xs:maxInclusive value="999"/> <!-- 3 digits -->
+	  </xs:restriction>
+	</xs:simpleType>
+      </xs:element>
+      <xs:element  name="phonenum" minOccurs="1" maxOccurs="1">
+	<xs:simpleType>
+	  <xs:restriction base="xs:positiveInteger">
+	    <xs:maxInclusive value="9999999999"/> <!-- 10 digits -->
+	  </xs:restriction>
+	</xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeOnline">
+    <xs:sequence>
+      <xs:element name="site" type="typeSite" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeDegree">
+    <xs:all>
+      <xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="status" type="typeDegreeStatus" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="typeWork">
+    <xs:sequence>
+      <xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="domain" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="technologies" type="typeTechnologies" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="authors" type="typeAuthors" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="workstatus" type="typeWorkstatus" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeSkill">
+    <xs:sequence>
+      <xs:element name="domain" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="level" type="typeLevel" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeAuthors">
+    <xs:sequence>
+      <xs:element name="author" type="typeAuthor" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- **** Niveau 4 **** -->
+
+  <xs:complexType name="typeRoad">
+    <xs:all>
+      <xs:element name="rdtype" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="rdnum" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="rdname" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="rdext" type="xs:string" minOccurs="0" maxOccurs="1"/> <!-- bis, ter,... -->
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="typeAppartment">
+    <xs:all>
+      <xs:element name="appnum" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="building" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="appmisc" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="typeSite">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="url" type="xs:anyURI" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeTechnologies">
+    <xs:sequence>
+      <xs:element name="tech" type="typeTech" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeAuthor">
+    <xs:sequence>
+      <xs:element name="name" type="typeName" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="position" type="typeJobPosition" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- **** Niveau 5 **** -->
+
+  <xs:complexType name="typeTech">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ***************** Spécification des éléments ***************** -->
+
+  <xs:element name="cv" type="cvRoot"/>
+</xs:schema>
