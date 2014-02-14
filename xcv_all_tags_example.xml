@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xcv:cv xmlns:xcv="http://dje.josuah.aron/09/05/1983/xcv">
+
+<xcv:cv xmlns:xcv="http://dje.josuah.aron/09/05/1983/xcv"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://dje.josuah.aron/09/05/1983/xcv xcv.xsd">
+
   <xcv:cvlang>fr</xcv:cvlang>
   <xcv:objective>Stage de 3 mois - développement d'applications.</xcv:objective>
   <xcv:picture>lion.png</xcv:picture>
