@@ -82,7 +82,7 @@
 	  <xcv:country>France</xcv:country>
 	  <xcv:city>Grenoble</xcv:city>
 	</xcv:location>
-	<xcv:status>running</xcv:status>
+	<xcv:status value="running">en cours</xcv:status>
 	<xcv:details></xcv:details>
       </xcv:degree>
       <xcv:degree>
@@ -98,7 +98,7 @@
 	  <xcv:country>France</xcv:country>
 	  <xcv:city>Paris</xcv:city>
 	</xcv:location>
-	<xcv:status>passed</xcv:status>
+	<xcv:status value="passed">obtenu</xcv:status>
 	<xcv:details></xcv:details>
       </xcv:degree>
     </xcv:degrees>
@@ -219,7 +219,7 @@
 	    </xcv:position>
 	  </xcv:author>
 	</xcv:authors>
-	<xcv:workstatus>in progress</xcv:workstatus>
+	<xcv:workstatus value="in progress">en développement</xcv:workstatus>
 	<xcv:details>Séparer la présentation d'un CV de sa construction (données)</xcv:details>
       </xcv:realization>
     </xcv:realizations>
@@ -263,7 +263,7 @@
 	    </xcv:name>
 	  </xcv:author>
 	</xcv:authors>
-	<xcv:workstatus>on standby</xcv:workstatus>
+	<xcv:workstatus value="on standby">stand-by</xcv:workstatus>
 	<xcv:details>Projet à reprendre dans les mois à venir</xcv:details>
       </xcv:project>
     </xcv:projects>
@@ -274,58 +274,58 @@
       <xcv:domain name="Programmation">
 	<xcv:skill>
 	  <xcv:title>C++, Qt</xcv:title>
-	  <xcv:level>medium</xcv:level>
+	  <xcv:level value="medium">intermédiaire</xcv:level>
 	  <xcv:details>3 ans d'expérience</xcv:details>
 	</xcv:skill>
 	<xcv:skill>
 	  <xcv:title>Java</xcv:title>
-	  <xcv:level>medium</xcv:level>
+	  <xcv:level value="medium">intermédiaire</xcv:level>
 	  <xcv:details></xcv:details>
 	</xcv:skill>
 	<xcv:skill>
 	  <xcv:title>C</xcv:title>
-	  <xcv:level>medium</xcv:level>
+	  <xcv:level value="medium">intermédiaire</xcv:level>
 	  <xcv:details></xcv:details>
 	</xcv:skill>
 	<xcv:skill>
 	  <xcv:title>Python</xcv:title>
-	  <xcv:level>beginner</xcv:level>
+	  <xcv:level value="beginner">débutant</xcv:level>
 	  <xcv:details></xcv:details>
 	</xcv:skill>
       </xcv:domain>
       <xcv:domain name="Bases de données">
 	<xcv:skill>
 	  <xcv:title>Oracle, MySql, Access</xcv:title>
-	  <xcv:level>medium</xcv:level>
+	  <xcv:level value="medium">intermédiaire</xcv:level>
 	  <xcv:details></xcv:details>
 	</xcv:skill>
       </xcv:domain>
       <xcv:domain name="Réseaux, systèmes distribués">
 	<xcv:skill>
 	  <xcv:title></xcv:title>
-	  <xcv:level>medium</xcv:level>
+	  <xcv:level value="medium">intermédiaire</xcv:level>
 	  <xcv:details>Administration de base, programmation.</xcv:details>
 	</xcv:skill>
       </xcv:domain>
       <xcv:domain name="Développement web">
 	<xcv:skill>
 	  <xcv:title>PHP</xcv:title>
-	  <xcv:level>medium</xcv:level>
+	  <xcv:level value="medium">intermédiaire</xcv:level>
 	  <xcv:details>4 ans d'expérience</xcv:details>
 	</xcv:skill>
 	<xcv:skill>
 	  <xcv:title>HTML, XML, CSS</xcv:title>
-	  <xcv:level>medium</xcv:level>
+	  <xcv:level value="medium">intermédiaire</xcv:level>
 	  <xcv:details></xcv:details>
 	</xcv:skill>
 	<xcv:skill>
 	  <xcv:title>JavaScript, JQuery</xcv:title>
-	  <xcv:level>beginner</xcv:level>
+	  <xcv:level value="beginner"> débutant</xcv:level>
 	  <xcv:details></xcv:details>
 	</xcv:skill>
 	<xcv:skill>
 	  <xcv:title>Pyramid, Zend</xcv:title>
-	  <xcv:level>beginner</xcv:level>
+	  <xcv:level value="beginner">débutant</xcv:level>
 	  <xcv:details></xcv:details>
 	</xcv:skill>
       </xcv:domain>
@@ -335,28 +335,28 @@
       <xcv:domain name="Développement web">
 	<xcv:skill>
 	  <xcv:title>WebGL, Three.js</xcv:title>
-	  <xcv:level>beginner</xcv:level>
+	  <xcv:level value="beginner">débutant</xcv:level>
 	  <xcv:details>Réalisé: jeu 3D stunt pong</xcv:details>
 	</xcv:skill>
       </xcv:domain>
       <xcv:domain name="Scripting">
 	<xcv:skill>
 	  <xcv:title>Bash</xcv:title>
-	  <xcv:level>beginner</xcv:level>
+	  <xcv:level value="beginner">débutant</xcv:level>
 	  <xcv:details></xcv:details>
 	</xcv:skill>
       </xcv:domain>
       <xcv:domain name="CGI">
 	<xcv:skill>
 	  <xcv:title>Photoshop, 3dsmax, Gimp, after effect, Premiere</xcv:title>
-	  <xcv:level>beginner</xcv:level>
+	  <xcv:level value="beginner">débutant</xcv:level>
 	  <xcv:details></xcv:details>
 	</xcv:skill>
       </xcv:domain>
       <xcv:domain name="Suites bureautique">
 	<xcv:skill>
 	  <xcv:title>MS office / Libre Office</xcv:title>
-	  <xcv:level>medium</xcv:level>
+	  <xcv:level value="medium">intermédiaire</xcv:level>
 	  <xcv:details>J'étais obligé</xcv:details>
 	</xcv:skill>
       </xcv:domain>
@@ -366,17 +366,17 @@
   <xcv:languages>
     <xcv:lang>
       <xcv:title>Français</xcv:title>
-      <xcv:level>advanced</xcv:level>
+      <xcv:level value="advanced">avancé</xcv:level>
       <xcv:details></xcv:details>
     </xcv:lang>
     <xcv:lang>
       <xcv:title>Anglais</xcv:title>
-      <xcv:level>medium</xcv:level>
+      <xcv:level value="medium">intermédiaire</xcv:level>
       <xcv:details>Score TOEIC (décembre 2011): 1000/990</xcv:details>
     </xcv:lang>
     <xcv:lang>
       <xcv:title>Allemand</xcv:title>
-      <xcv:level>beginner</xcv:level>
+      <xcv:level value="beginner">débutant</xcv:level>
       <xcv:details></xcv:details>
     </xcv:lang>
   </xcv:languages>

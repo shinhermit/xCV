@@ -42,25 +42,26 @@
 
 
   <!-- ***************** Définition des types simples ***************** -->
-  <xs:simpleType name="typeWorkstatus">
+  <xs:simpleType name="enumWorkstatus">
     <xs:restriction base="xs:string">
       <xs:enumeration value="in progress"/>
       <xs:enumeration value="on standby"/>
       <xs:enumeration value="released"/>
       <xs:enumeration value="activly maintained"/>
       <xs:enumeration value="abandonned"/>
+      <xs:enumeration value="deprecated"/>
       <xs:enumeration value="obsolete"/>
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="typeDegreeStatus">
+  <xs:simpleType name="enumDegreeStatus">
     <xs:restriction base="xs:string">
       <xs:enumeration value="running"/>
       <xs:enumeration value="passed"/>
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="typeLevel">
+  <xs:simpleType name="enumLevel">
     <xs:restriction base="xs:string">
       <xs:enumeration value="beginner"/>
       <xs:enumeration value="medium"/>
@@ -454,6 +455,30 @@
       <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="url" type="xs:anyURI" minOccurs="1" maxOccurs="unbounded"/>
     </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="typeWorkstatus">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attribute name="value" type="enumWorkstatus" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="typeDegreeStatus">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attribute name="value" type="enumDegreeStatus" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="typeLevel">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attribute name="value" type="enumLevel" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
   </xs:complexType>
 
   <xs:complexType name="typeTechnologies">
