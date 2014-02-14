@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xtr:vocabulary xmlns:xtr="http://dje.josuah.aron/09/05/1983/xtranslate"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://dje.josuah.aron/09/05/1983/xtranslate xtranslate.xsd">
+
+  <xtr:translationLanguages source="en" target="fr"/>
+
+  <xtr:translation>
+    <xtr:sourceWord>objective</xtr:sourceWord>
+    <xtr:tranlatedWord>objectif</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>education</xtr:sourceWord>
+    <xtr:tranlatedWord>études</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>certificates</xtr:sourceWord>
+    <xtr:tranlatedWord>certifications</xtr:tranlatedWord>
+  </xtr:translation>
+
+
+  <xtr:translation>
+    <xtr:sourceWord>experience</xtr:sourceWord>
+    <xtr:tranlatedWord>expérience profesionnelle</xtr:tranlatedWord>
+  </xtr:translation>
+
+
+  <xtr:translation>
+    <xtr:sourceWord>jobs</xtr:sourceWord>
+    <xtr:tranlatedWord>expériences annexes</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>realizations</xtr:sourceWord>
+    <xtr:tranlatedWord>travaux</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>projects</xtr:sourceWord>
+    <xtr:tranlatedWord>projets</xtr:tranlatedWord>
+  </xtr:translation>
+
+
+  <xtr:translation>
+    <xtr:sourceWord>skills</xtr:sourceWord>
+    <xtr:tranlatedWord>compétences</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>other skills</xtr:sourceWord>
+    <xtr:tranlatedWord>compétences annexes</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>languages</xtr:sourceWord>
+    <xtr:tranlatedWord>langues</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>interests</xtr:sourceWord>
+    <xtr:tranlatedWord>centres d'intérêts</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>publications</xtr:sourceWord>
+    <xtr:tranlatedWord>publications</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>conferences</xtr:sourceWord>
+    <xtr:tranlatedWord>conférences</xtr:tranlatedWord>
+  </xtr:translation>
+
+  <xtr:translation>
+    <xtr:sourceWord>honors</xtr:sourceWord>
+    <xtr:tranlatedWord>distinctions</xtr:tranlatedWord>
+  </xtr:translation>
+
+</xtr:vocabulary>
