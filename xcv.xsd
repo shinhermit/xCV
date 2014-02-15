@@ -133,7 +133,7 @@
   <!-- **** La racine **** -->
   <xs:complexType name="cvRoot">
     <xs:all>
-      <xs:element name="cvlang" type="typeCVLang" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="cvlang" type="typeCVLang" minOccurs="1" maxOccurs="1"/>
       <xs:element name="objective" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="picture" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
       <xs:element name="identity" type="typeIdentity" minOccurs="1" maxOccurs="1"/>

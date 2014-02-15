@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <xsl:stylesheet version="1.0"
                xmlns:xcv="http://dje.josuah.aron/09/05/1983/xcv"
+	       xmlns:xtr="http://dje.josuah.aron/09/05/1983/xtranslate"
                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
    <xsl:output method="text" omit-xml-declaration="yes" encoding="UTF-8"/>
-
 
   <!-- Reused transforms are defined as functions -->
   <!-- EXPERIENCE AND JOBS (positions) -->
@@ -157,7 +157,27 @@
     </xsl:if>
   </xsl:template>
 
+
 <xsl:template match="xcv:cv">
+
+  <xsl:variable name="translate" select="document(concat('xcv_translate_',./xcv:cvlang/text(),'.xml'), document(''))/*"/>
+
+  <xsl:variable name="titleObjective" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'objective']/xtr:translatedWord"/>
+  <xsl:variable name="titleEducation" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'education']/xtr:translatedWord"/>
+  <xsl:variable name="titleCertificates" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'certificates']/xtr:translatedWord"/>
+  <xsl:variable name="titleExperience" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'experience']/xtr:translatedWord"/>
+  <xsl:variable name="titleJobs" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'jobs']/xtr:translatedWord"/>
+  <xsl:variable name="titleRealizations" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'realization']/xtr:translatedWord"/>
+  <xsl:variable name="titleProjects" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'projects']/xtr:translatedWord"/>
+  <xsl:variable name="titleSkills" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'skills']/xtr:translatedWord"/>
+  <xsl:variable name="titleOtherSkills" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'other skills']/xtr:translatedWord"/>
+  <xsl:variable name="titleLanguages" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'languages']/xtr:translatedWord"/>
+  <xsl:variable name="titleInterest" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'interest']/xtr:translatedWord"/>
+  <xsl:variable name="titlePublications" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'publications']/xtr:translatedWord"/>
+  <xsl:variable name="titleConferences" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'conferences']/xtr:translatedWord"/>
+  <xsl:variable name="titleHonors" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'honors']/xtr:translatedWord"/>
+  
+
 <xsl:text>
 \documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
@@ -275,14 +295,14 @@
   <!-- CV OBJECTIVE -->
 <xsl:variable name="objective" select="./xcv:objective"/>
 <xsl:if test="$objective/text()">
-  <xsl:text>\section*{Objectif}&#xA;</xsl:text>
+  <xsl:text>\section*{</xsl:text><xsl:value-of select="$titleObjective"/><xsl:text>}&#xA;</xsl:text>
   <xsl:value-of select="$objective"/>
 </xsl:if>
 
   <!-- EXPERIENCE -->
   <xsl:call-template name="jobsTemplate">
     <xsl:with-param name="sectionTitle">
-      <xsl:text>Expérience Professionnelle</xsl:text>
+      <xsl:value-of select="$titleExperience"/>
     </xsl:with-param>
     <xsl:with-param name="positionsList" select="xcv:experience/xcv:position"/>
   </xsl:call-template>
@@ -290,7 +310,7 @@
   <!-- JOBS -->
   <xsl:call-template name="jobsTemplate">
     <xsl:with-param name="sectionTitle">
-      <xsl:text>Expériences annexes</xsl:text>
+      <xsl:value-of select="$titleJobs"/>
     </xsl:with-param>
     <xsl:with-param name="positionsList" select="xcv:jobs/xcv:position"/>
   </xsl:call-template>
@@ -298,7 +318,7 @@
   <!-- WORKS (realizations) -->
   <xsl:call-template name="worksTemplate">
     <xsl:with-param name="sectionTitle">
-      <xsl:text>Travaux</xsl:text>
+      <xsl:value-of select="$titleRealizations"/>
     </xsl:with-param>
     <xsl:with-param name="worksList" select="xcv:works/xcv:realizations/xcv:realization"/>
   </xsl:call-template>
@@ -306,7 +326,7 @@
   <!-- WORKS (projects) --> <!-- Need for reuse of WORKS (realizations) -->
   <xsl:call-template name="worksTemplate">
     <xsl:with-param name="sectionTitle">
-      <xsl:text>Projets</xsl:text>
+      <xsl:value-of select="$titleProjects"/>
     </xsl:with-param>
     <xsl:with-param name="worksList" select="xcv:works/xcv:projects/xcv:project"/>
   </xsl:call-template>
@@ -314,7 +334,7 @@
   <!-- SKILLS (expertise) -->
   <xsl:call-template name="skillsTemplate">
     <xsl:with-param name="sectionTitle">
-      <xsl:text>Compétences principales</xsl:text>
+      <xsl:value-of select="$titleSkills"/>
     </xsl:with-param>
     <xsl:with-param name="skillsByDomainList" select="xcv:skills/xcv:expertise/xcv:domain"/>
   </xsl:call-template>
@@ -322,7 +342,7 @@
   <!-- SKILLS (other) -->
   <xsl:call-template name="skillsTemplate">
     <xsl:with-param name="sectionTitle">
-      <xsl:text>Autres Compétences</xsl:text>
+      <xsl:value-of select="$titleOtherSkills"/>
     </xsl:with-param>
     <xsl:with-param name="skillsByDomainList" select="xcv:skills/xcv:other/xcv:domain"/>
   </xsl:call-template>
@@ -330,7 +350,7 @@
   <!-- EDUCATION (university)-->
   <xsl:call-template name="educationTemplate">
     <xsl:with-param name="sectionTitle">
-      <xsl:text>Cursus universitaire</xsl:text>
+      <xsl:value-of select="$titleEducation"/>
     </xsl:with-param>
     <xsl:with-param name="degreesList" select="xcv:education/xcv:degrees/xcv:degree"/>
   </xsl:call-template>
@@ -338,13 +358,13 @@
   <!-- EDUCATION (certificates)-->
   <xsl:call-template name="educationTemplate">
     <xsl:with-param name="sectionTitle">
-      <xsl:text>Certificats</xsl:text>
+      <xsl:value-of select="$titleCertificates"/>
     </xsl:with-param>
     <xsl:with-param name="degreesList" select="xcv:education/xcv:certificates/xcv:certificate"/>
   </xsl:call-template>
 
   <!-- LANGUAGES -->
-  <xsl:text>\section*{Langues}&#xA;</xsl:text>
+  <xsl:text>\section*{</xsl:text><xsl:value-of select="$titleLanguages"/><xsl:text>}&#xA;</xsl:text>
   <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
   <xsl:for-each select="xcv:languages/xcv:lang">
     <xsl:value-of select="./xcv:title"/><xsl:text>&amp;</xsl:text>
@@ -358,7 +378,7 @@
   <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
 
   <!-- HONORS -->
-  <xsl:text>\section*{Distinctions}&#xA;</xsl:text>
+  <xsl:text>\section*{</xsl:text><xsl:value-of select="$titleHonors"/><xsl:text>}&#xA;</xsl:text>
   <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
   <xsl:for-each select="xcv:honors/xcv:distinction">
     <xsl:value-of select="./xcv:year"/><xsl:text>&amp;</xsl:text>
@@ -376,7 +396,7 @@
   <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
 
   <!-- INTEREST -->
-  <xsl:text>\section*{Centres d'intérêts}&#xA;</xsl:text>
+  <xsl:text>\section*{</xsl:text><xsl:value-of select="$titleInterest"/><xsl:text>}&#xA;</xsl:text>
   <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
   <xsl:for-each select="xcv:interest/xcv:item">
     <xsl:value-of select="./xcv:title"/><xsl:text>&amp;</xsl:text>
@@ -386,7 +406,7 @@
   <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
 
   <!-- PUBLICATIONS -->
-  <xsl:text>\section*{Publications}&#xA;</xsl:text>
+  <xsl:text>\section*{</xsl:text><xsl:value-of select="$titlePublications"/><xsl:text>}&#xA;</xsl:text>
   <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
   <xsl:for-each select="xcv:publications/xcv:publication">
     <xsl:value-of select="./xcv:year"/><xsl:text>&amp;</xsl:text>
@@ -404,7 +424,7 @@
   <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
 
   <!-- CONFERENCES -->
-  <xsl:text>\section*{Conférences}&#xA;</xsl:text>
+  <xsl:text>\section*{</xsl:text><xsl:value-of select="$titleConferences"/><xsl:text>}&#xA;</xsl:text>
   <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
   <xsl:for-each select="xcv:conferences/xcv:conference">
     <xsl:value-of select="./xcv:year"/><xsl:text>&amp;</xsl:text>
