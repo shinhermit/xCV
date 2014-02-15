@@ -21,12 +21,10 @@
     <xtr:translatedWord>certifications</xtr:translatedWord>
   </xtr:translation>
 
-
   <xtr:translation>
     <xtr:sourceWord>experience</xtr:sourceWord>
     <xtr:translatedWord>expérience profesionnelle</xtr:translatedWord>
   </xtr:translation>
-
 
   <xtr:translation>
     <xtr:sourceWord>jobs</xtr:sourceWord>
@@ -42,7 +40,6 @@
     <xtr:sourceWord>projects</xtr:sourceWord>
     <xtr:translatedWord>projets</xtr:translatedWord>
   </xtr:translation>
-
 
   <xtr:translation>
     <xtr:sourceWord>skills</xtr:sourceWord>
