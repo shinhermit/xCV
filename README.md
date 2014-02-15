@@ -18,6 +18,5 @@ One can use the W3C validator to check the schema and the example:
 http://www.utilities-online.info/xsdvalidation/
 
 # Todo
-* Handle language translation of titles of the main sections.
-* Handle extern specification of the positionning of the defferent section (someone'd better place Education before Experience?).
+* Write a script bash for simple automation (until there is the real tool).
 * Develop the interactive tool for data entry and automation process.
