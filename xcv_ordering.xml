@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xcv:order xmlns:xcv="http://dje.josuah.aron/09/05/1983/xcv"
+<xcv:ordering xmlns:xcv="http://dje.josuah.aron/09/05/1983/xcv"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://dje.josuah.aron/09/05/1983/xcv #schema">
 
@@ -29,7 +29,7 @@
     </xs:annotation>
 
     <!-- ***************** Spécification des éléments ***************** -->
-    <xs:element name="order">
+    <xs:element name="ordering">
       <xs:complexType>
 	<xs:sequence>
 
@@ -74,4 +74,4 @@
 
   <xcv:position section="honors"/>
 
-</xcv:order>
+</xcv:ordering>

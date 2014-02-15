@@ -282,26 +282,145 @@
     </xsl:if>
   </xsl:template>
 
+  <!-- A function to put first letter uppercase (XSLT 1.0 lacks upper-case funciton) -->
+  <xsl:template name="uc_first">
+    <xsl:param name="str"/>
+
+    <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyzàèìòùỳéâêîôûŷäëïöüÿ'"/>
+    <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÈÌÒÙỲÉÂÊÎÔÛŶÄËÏÖÜŸ'"/>
+
+    <xsl:value-of select="concat(translate(substring($str, 1, 1), $lower, $upper), substring($str, 2))"/>
+  </xsl:template>
+
+  <!-- A function to fetch the translated titles of sections -->
+  <xsl:template name="getTitle">
+    <xsl:param name="translate"/>
+    <xsl:param name="sectionName"/>
+    <xsl:param name="defaultTitle"/>
+
+    <xsl:variable name="fetchedTitle" select="$translate/xtr:translation[./xtr:sourceWord/text() = $sectionName]/xtr:translatedWord"/>
+    <xsl:choose>
+      <xsl:when test="$fetchedTitle">
+	<!--xsl:value-of select="$fetchedTitle"/-->
+	<xsl:call-template name="uc_first">
+	  <xsl:with-param name="str" select="$fetchedTitle"/>
+	</xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+	<!--xsl:value-of select="$defaultTitle"/-->
+	<xsl:call-template name="uc_first">
+	  <xsl:with-param name="str" select="$defaultTitle"/>
+	</xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <!-- ****************** Main template ****************** -->
 
   <xsl:template match="xcv:cv">
 
+    <!-- Begin: Get the translate titles from file-->
     <xsl:variable name="translate" select="document(concat('xcv_translate_',./xcv:cvlang/text(),'.xml'), document(''))/*"/>
 
-    <xsl:variable name="titleObjective" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'objective']/xtr:translatedWord"/>
-    <xsl:variable name="titleEducation" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'education']/xtr:translatedWord"/>
-    <xsl:variable name="titleCertificates" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'certificates']/xtr:translatedWord"/>
-    <xsl:variable name="titleExperience" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'experience']/xtr:translatedWord"/>
-    <xsl:variable name="titleJobs" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'jobs']/xtr:translatedWord"/>
-    <xsl:variable name="titleRealizations" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'realizations']/xtr:translatedWord"/>
-    <xsl:variable name="titleProjects" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'projects']/xtr:translatedWord"/>
-    <xsl:variable name="titleSkills" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'skills']/xtr:translatedWord"/>
-    <xsl:variable name="titleOtherSkills" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'other skills']/xtr:translatedWord"/>
-    <xsl:variable name="titleLanguages" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'languages']/xtr:translatedWord"/>
-    <xsl:variable name="titleInterest" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'interest']/xtr:translatedWord"/>
-    <xsl:variable name="titlePublications" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'publications']/xtr:translatedWord"/>
-    <xsl:variable name="titleConferences" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'conferences']/xtr:translatedWord"/>
-    <xsl:variable name="titleHonors" select="$translate/xtr:translation[./xtr:sourceWord/text() = 'honors']/xtr:translatedWord"/>
+    <xsl:variable name="titleObjective">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'objective'"/>
+	<xsl:with-param name="defaultTitle" select="'objective'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleEducation">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'education'"/>
+	<xsl:with-param name="defaultTitle" select="'education'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleCertificates">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'certificates'"/>
+	<xsl:with-param name="defaultTitle" select="'certificates'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleExperience">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'experience'"/>
+	<xsl:with-param name="defaultTitle" select="'experience'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleJobs">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'jobs'"/>
+	<xsl:with-param name="defaultTitle" select="'jobs'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleRealizations">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'realizations'"/>
+	<xsl:with-param name="defaultTitle" select="'realizations'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleProjects">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'projects'"/>
+	<xsl:with-param name="defaultTitle" select="'projects'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleSkills">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'skills'"/>
+	<xsl:with-param name="defaultTitle" select="'expert skills'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleOtherSkills">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'other skills'"/>
+	<xsl:with-param name="defaultTitle" select="'other skills'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleLanguages">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'languages'"/>
+	<xsl:with-param name="defaultTitle" select="'languages'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleInterest">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'interest'"/>
+	<xsl:with-param name="defaultTitle" select="'interest'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titlePublications">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'publications'"/>
+	<xsl:with-param name="defaultTitle" select="'publications'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleConferences">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'conferences'"/>
+	<xsl:with-param name="defaultTitle" select="'conferences'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="titleHonors">
+      <xsl:call-template name="getTitle">
+	<xsl:with-param name="translate" select="$translate"/>
+	<xsl:with-param name="sectionName" select="'honors'"/>
+	<xsl:with-param name="defaultTitle" select="'honors'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <!-- End: Get the translate titles from file-->
 
     <xsl:text>
 \documentclass[10pt]{article}
@@ -428,109 +547,143 @@
       <xsl:value-of select="$objective"/><xsl:text>&#xA;&#xA;</xsl:text>
     </xsl:if>
 
-    <!-- EXPERIENCE -->
-    <xsl:call-template name="jobsTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleExperience"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:experience/xcv:position"/>
-    </xsl:call-template>
+    <!-- Ordering sections from a file -->
+    <xsl:variable name="this" select="."/>
+    <xsl:for-each select="document('xcv_ordering.xml')/xcv:ordering/xcv:position">
+      <xsl:choose>
 
-    <!-- JOBS -->
-    <xsl:call-template name="jobsTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleJobs"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:jobs/xcv:position"/>
-    </xsl:call-template>
+	<!-- EDUCATION (university)-->
+	<xsl:when test="./@section = 'education'">
+	  <xsl:call-template name="educationTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleEducation"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:education/xcv:degrees/xcv:degree"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- WORKS (realizations) -->
-    <xsl:call-template name="worksTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleRealizations"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:works/xcv:realizations/xcv:realization"/>
-    </xsl:call-template>
+	<!-- EDUCATION (certificates)-->
+	<xsl:when test="./@section = 'certificates'">
+	  <xsl:call-template name="educationTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleCertificates"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:education/xcv:certificates/xcv:certificate"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- WORKS (projects) --> <!-- Need for reuse of WORKS (realizations) -->
-    <xsl:call-template name="worksTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleProjects"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:works/xcv:projects/xcv:project"/>
-    </xsl:call-template>
+	<!-- EXPERIENCE -->
+	<xsl:when test="./@section = 'experience'">
+	  <xsl:call-template name="jobsTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleExperience"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:experience/xcv:position"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- SKILLS (expertise) -->
-    <xsl:call-template name="skillsTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleSkills"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:skills/xcv:expertise/xcv:domain"/>
-    </xsl:call-template>
+	<!-- JOBS -->
+	<xsl:when test="./@section = 'jobs'">
+	  <xsl:call-template name="jobsTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleJobs"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:jobs/xcv:position"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- SKILLS (other) -->
-    <xsl:call-template name="skillsTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleOtherSkills"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:skills/xcv:other/xcv:domain"/>
-    </xsl:call-template>
+	<!-- WORKS (realizations) -->
+	<xsl:when test="./@section = 'realizations'">
+	  <xsl:call-template name="worksTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleRealizations"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:works/xcv:realizations/xcv:realization"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- EDUCATION (university)-->
-    <xsl:call-template name="educationTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleEducation"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:education/xcv:degrees/xcv:degree"/>
-    </xsl:call-template>
+	<!-- WORKS (projects) -->
+	<xsl:when test="./@section = 'projects'">
+	  <xsl:call-template name="worksTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleProjects"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:works/xcv:projects/xcv:project"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- EDUCATION (certificates)-->
-    <xsl:call-template name="educationTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleCertificates"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:education/xcv:certificates/xcv:certificate"/>
-    </xsl:call-template>
+	<!-- SKILLS (expertise) -->
+	<xsl:when test="./@section = 'expert skills'">
+	  <xsl:call-template name="skillsTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleSkills"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:skills/xcv:expertise/xcv:domain"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- LANGUAGES -->
-    <xsl:call-template name="languagesTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleLanguages"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:languages/xcv:lang"/>
-    </xsl:call-template>
+	<!-- SKILLS (other) -->
+	<xsl:when test="./@section = 'other skills'">
+	  <xsl:call-template name="skillsTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleOtherSkills"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:skills/xcv:other/xcv:domain"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- HONORS -->
-    <xsl:call-template name="honorsTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleHonors"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:honors/xcv:distinction"/>
-    </xsl:call-template>
+	<!-- LANGUAGES -->
+	<xsl:when test="./@section = 'languages'">
+	  <xsl:call-template name="languagesTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleLanguages"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:languages/xcv:lang"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- INTEREST -->
-    <xsl:call-template name="interestTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleInterest"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:interest/xcv:item"/>
-    </xsl:call-template>
+	<!-- INTEREST -->
+	<xsl:when test="./@section = 'interests'">
+	  <xsl:call-template name="interestTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleInterest"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:interest/xcv:item"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- PUBLICATIONS -->
-    <xsl:call-template name="publicationsTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titlePublications"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:publications/xcv:publication"/>
-    </xsl:call-template>
+	<!-- PUBLICATIONS -->
+	<xsl:when test="./@section = 'publications'">
+	  <xsl:call-template name="publicationsTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titlePublications"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:publications/xcv:publication"/>
+	  </xsl:call-template>
+	</xsl:when>
 
-    <!-- CONFERENCES -->
-    <xsl:call-template name="conferencesTemplate">
-      <xsl:with-param name="sectionTitle">
-	<xsl:value-of select="$titleConferences"/>
-      </xsl:with-param>
-      <xsl:with-param name="items" select="xcv:conferences/xcv:conference"/>
-    </xsl:call-template>
+	<!-- CONFERENCES -->
+	<xsl:when test="./@section = 'conferences'">
+	  <xsl:call-template name="conferencesTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleConferences"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:conferences/xcv:conference"/>
+	  </xsl:call-template>
+	</xsl:when>
+
+	<!-- HONORS -->
+	<xsl:when test="./@section = 'honors'">
+	  <xsl:call-template name="honorsTemplate">
+	    <xsl:with-param name="sectionTitle">
+	      <xsl:value-of select="$titleHonors"/>
+	    </xsl:with-param>
+	    <xsl:with-param name="items" select="$this/xcv:honors/xcv:distinction"/>
+	  </xsl:call-template>
+	</xsl:when>
+
+      </xsl:choose>
+    </xsl:for-each>
 
     <xsl:text>
 {\vspace{20pt}%\newline\newline
