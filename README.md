@@ -19,4 +19,5 @@ http://www.utilities-online.info/xsdvalidation/
 
 # Todo
 * Write a script bash for simple automation (until there is the real tool).
+* Add an URL section for projects and realizations.
 * Develop the interactive tool for data entry and automation process.

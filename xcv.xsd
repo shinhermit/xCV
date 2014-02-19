@@ -69,6 +69,13 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="enumDisplay">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="show"/>
+      <xs:enumeration value="hide"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:simpleType name="typeCVLang">
     <xs:restriction base="xs:string">
       <xs:enumeration value="fr"/>
@@ -412,6 +419,7 @@
       <xs:element name="technologies" type="typeTechnologies" minOccurs="0" maxOccurs="1"/>
       <xs:element name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="authors" type="typeAuthors" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="online" type="typeOnline" minOccurs="0" maxOccurs="1"/>
       <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="workstatus" type="typeWorkstatus" minOccurs="0" maxOccurs="1"/>
     </xs:all>
@@ -477,6 +485,7 @@
     <xs:simpleContent>
       <xs:extension base="xs:string">
 	<xs:attribute name="value" type="enumLevel" use="required"/>
+	<xs:attribute name="display" type="enumDisplay" default="show"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>

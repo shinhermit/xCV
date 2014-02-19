@@ -52,19 +52,19 @@
 
   <xcv:position section="certificates"/>
 
+  <xcv:position section="expert skills"/>
+
+  <xcv:position section="other skills"/>
+
   <xcv:position section="experience"/>
+
+  <xcv:position section="languages"/>
 
   <xcv:position section="jobs"/>
 
   <xcv:position section="realizations"/>
 
   <xcv:position section="projects"/>
-
-  <xcv:position section="expert skills"/>
-
-  <xcv:position section="other skills"/>
-
-  <xcv:position section="languages"/>
 
   <xcv:position section="interests"/>
 

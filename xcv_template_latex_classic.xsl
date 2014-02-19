@@ -19,7 +19,7 @@
 	<xsl:variable name="begin" select="./xcv:begin/xcv:year"/>
 	<xsl:value-of select="$begin"/>
 	<xsl:if test="$begin/text()">
-	  <xsl:text>--</xsl:text>
+	  <xsl:text> -- </xsl:text>
 	</xsl:if>
 	<xsl:value-of select="./xcv:end/xcv:year"/><xsl:text>&amp;</xsl:text>
 	<xsl:value-of select="./xcv:title"/>
@@ -53,16 +53,24 @@
       <xsl:text>\section*{</xsl:text><xsl:value-of select="$sectionTitle"/><xsl:text>}&#xA;</xsl:text>
       <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
       <xsl:for-each select="$items">
+	<xsl:value-of select="./xcv:begin/xcv:month"/>
+	<xsl:if test="./xcv:begin/xcv:month/text()">
+	  <xsl:text>-</xsl:text>
+	</xsl:if>
 	<xsl:value-of select="./xcv:begin/xcv:year"/>
 	<xsl:variable name="end" select="./xcv:end/xcv:year"/>
 	<xsl:if test="$end/text()">
-	  <xsl:text>--</xsl:text>
+	  <xsl:text> -- </xsl:text>
+	</xsl:if>
+	<xsl:value-of select="./xcv:end/xcv:month"/>
+	<xsl:if test="./xcv:end/xcv:month/text()">
+	  <xsl:text>-</xsl:text>
 	</xsl:if>
 	<xsl:value-of select="$end"/><xsl:text>&amp;</xsl:text>
 	<xsl:value-of select="./xcv:title"/>
 	<xsl:variable name="metier" select="./xcv:metier"/>
 	<xsl:if test="$metier/text()">
-	  <xsl:text>(</xsl:text>
+	  <xsl:text> (</xsl:text>
 	  <xsl:value-of select="$metier"/>
 	  <xsl:text>)</xsl:text>
 	</xsl:if>
@@ -75,6 +83,11 @@
 	<xsl:if test="$workstatus/text()">
 	  <xsl:text>, </xsl:text>
 	  <xsl:value-of select="$workstatus"/>
+	</xsl:if>
+	<xsl:variable name="url" select="./xcv:online/xcv:site/xcv:url"/>
+	<xsl:if test="$url/text()">
+	  <xsl:text>, </xsl:text>
+	  <xsl:value-of select="$url"/>
 	</xsl:if>
 	<xsl:text>\\&#xA;</xsl:text>
       </xsl:for-each>
@@ -100,12 +113,14 @@
 	  <xsl:value-of select="$title"/>
 	  <xsl:variable name="level" select="./xcv:level"/>
 	  <xsl:variable name="details" select="./xcv:details"/>
-	  <xsl:if test="$title/text() and ($level/text() or $details/text())">
+	  <xsl:if test="$title/text() and ($level/@display = 'show' or $details/text())">
 	    <xsl:text>: </xsl:text>
 	  </xsl:if>
-	  <xsl:value-of select="$level"/>
-	  <xsl:if test="$details/text()">
-	    <xsl:text>, </xsl:text>
+	  <xsl:if test="./xcv:level/@display = 'show' or not(./xcv:level/@display)">
+	    <xsl:value-of select="$level"/>
+	    <xsl:if test="$details/text()">
+	      <xsl:text>, </xsl:text>
+	    </xsl:if>
 	  </xsl:if>
 	  <xsl:value-of select="$details"/>
 	  <xsl:text>\\&#xA;</xsl:text>
@@ -128,7 +143,7 @@
 	<xsl:value-of select="./xcv:begin/xcv:year"/>
 	<xsl:variable name="end" select="./xcv:end/xcv:year"/>
 	<xsl:if test="$end/text()">
-	  <xsl:text>--</xsl:text>
+	  <xsl:text> -- </xsl:text>
 	</xsl:if>
 	<xsl:value-of select="$end"/><xsl:text>&amp;</xsl:text>
 	<xsl:value-of select="./xcv:title"/>
@@ -167,11 +182,13 @@
       <xsl:text>\begin{tabular}{L!{\VRule}R}&#xA;</xsl:text>
       <xsl:for-each select="$items">
 	<xsl:value-of select="./xcv:title"/><xsl:text>&amp;</xsl:text>
-	<xsl:value-of select="./xcv:level"/>
-	<xsl:if test="./xcv:details/text()">
-	  <xsl:text>, </xsl:text>
-	  <xsl:value-of select="./xcv:details"/>
+	<xsl:if test="./xcv:level/@display = 'show' or not(./xcv:level/@display)">
+	  <xsl:value-of select="./xcv:level"/>
+	  <xsl:if test="./xcv:details/text()">
+	    <xsl:text>, </xsl:text>
+	  </xsl:if>
 	</xsl:if>
+	<xsl:value-of select="./xcv:details"/>
 	<xsl:text>\\&#xA;</xsl:text>
       </xsl:for-each>
       <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
@@ -470,8 +487,18 @@
 
     <!-- Begin of Latex adjacence constraint -->
     <!-- The following 3 sections need to be adjacent (Latex constraint) -->
+    <xsl:variable name="miniPageWidth">
+      <xsl:choose>
+	<xsl:when test="./xcv:picture">
+	  <xsl:value-of select="0.33"/>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:value-of select="0.49"/>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <!-- OWNER'S ADDRESS -->
-    <xsl:text>\begin{minipage}[ht]{0.30\textwidth}&#xA;</xsl:text>
+    <xsl:text>\begin{minipage}[ht]{</xsl:text><xsl:value-of select="$miniPageWidth"/><xsl:text>\textwidth}&#xA;</xsl:text>
     <xsl:variable name="appmisc" select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:appmisc"/>
     <xsl:value-of select="$appmisc/text()"/>
     <xsl:variable name="bat" select="xcv:identity/xcv:evolving/xcv:address/xcv:appartment/xcv:building"/>
@@ -509,10 +536,10 @@
 
     <!-- OWNER'S PICTURE -->
     <xsl:variable name="picture" select="./xcv:picture"/>
-    <xsl:text>\begin{minipage}[ht]{0.30\textwidth}&#xA;</xsl:text>
+    <xsl:text>\begin{minipage}[ht]{</xsl:text><xsl:value-of select="$miniPageWidth"/><xsl:text>\textwidth}&#xA;</xsl:text>
     <xsl:if test="$picture/text()">
       <xsl:text>\begin{center}
-      \includegraphics[width=0.30\textwidth,keepaspectratio]{</xsl:text>
+      \includegraphics[width=</xsl:text><xsl:value-of select="$miniPageWidth"/><xsl:text>\textwidth,keepaspectratio]{</xsl:text>
       <xsl:value-of select="$picture"/>
       <xsl:text>}
       \end{center}</xsl:text>
@@ -520,7 +547,8 @@
     <xsl:text>&#xA;\end{minipage}&#xA;</xsl:text>
 
     <!-- OWNER'S CONTACTS -->
-    <xsl:text>\begin{minipage}[ht]{0.30\textwidth}&#xA;</xsl:text>
+    <xsl:text>\begin{minipage}[ht]{</xsl:text><xsl:value-of select="$miniPageWidth"/><xsl:text>\textwidth}&#xA;</xsl:text>
+    <xsl:text>\begin{flushright}&#xA;</xsl:text>
     <xsl:variable name="nationality" select="xcv:identity/xcv:definitive/xcv:nationality"/>
     <xsl:if test="$nationality/text()">
       <xsl:text>Nationalité </xsl:text><xsl:value-of select="$nationality"/>
@@ -536,6 +564,7 @@
       <xsl:text>\\&#xA;</xsl:text>
     </xsl:if>
     <xsl:value-of select="xcv:identity/xcv:evolving/xcv:email"/>
+    <xsl:text>\end{flushright}&#xA;</xsl:text>
     <xsl:text>&#xA;\end{minipage}&#xA;\vspace{20pt}&#xA;&#xA;</xsl:text>
 
     <!-- End of Latex adjacence constraint -->
