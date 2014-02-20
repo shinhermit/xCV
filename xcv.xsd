@@ -407,6 +407,7 @@
       <xs:element name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
       <xs:element name="status" type="typeDegreeStatus" minOccurs="0" maxOccurs="1"/>
       <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="degreContent" type="typeDegreeContent"/>
     </xs:all>
   </xs:complexType>
 
@@ -479,6 +480,17 @@
 	<xs:attribute name="value" type="enumDegreeStatus" use="required"/>
       </xs:extension>
     </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="typeDegreeContent">
+    <xs:sequence>
+      <xs:element name="module">
+	<xs:all>
+	  <xs:element name="title" type="xs:tring" minOccurs="1" maxOccurs="1"/>
+	  <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+	</xs:all>
+      </xs:element>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="typeLevel">
