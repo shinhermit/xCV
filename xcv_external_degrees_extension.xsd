@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<xs:schema version="1.1"
+	   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://dje.josuah.aron/09/05/1983/xcv"
+           xmlns="http://dje.josuah.aron/09/05/1983/xcv"
+           elementFormDefault="qualified">
+
+  <!-- **************** De la documentation ***************** -->
+  <xs:annotation>
+    <!-- Pour les humains -->
+    <xs:documentation>
+      <p>Ce schéma étend le schéma de base xCV en rajoutant l'élément 'degrees' comme possible racine d'un document.</p>
+      <p>Cette extension est ajoutée pour permettre de décrire les détails d'un cursus dans un fichier séparé.</p>
+    </xs:documentation>
+
+    <!-- Pour les machines: Dublin core -->
+    <xs:appinfo xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <dc:creator>Josuah Aron (mailto:josuah.aron@gmail.com)</dc:creator>
+      <dc:date>2014-02-11</dc:date>
+      <dc:subject>xcv,extension,cursus,fichier,séparé</dc:subject>
+      <dc:description>
+	Ce schéma étend le schéma de base xCV en rajoutant l'élément 'degrees' comme possible racine d'un document afin de pouvoir décrire les détails d'un cursus dans un fichier séparé.
+      </dc:description>
+    </xs:appinfo>
+  </xs:annotation>
+
+  <!-- ************* Inclusion du schéma principale ************* -->
+
+  <xs:include schemaLocation="./xcv.xsd"/>
+
+  <!-- ************* Déclaration d'une nouvelle racine potentielle ************* -->
+
+  <xs:element name="degrees" type="typeDegrees"/>
+
+</xs:schema>

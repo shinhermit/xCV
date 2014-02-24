@@ -1,0 +1,844 @@
+<?xml version="1.0"?>
+
+<!--course = cursus-->
+<!--degree = grade, diplôme-->
+<!--credit = UE (unité d'enseignement)-->
+<xcv:degrees xmlns:xcv="http://dje.josuah.aron/09/05/1983/xcv"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xsi:schemaLocation="http://dje.josuah.aron/09/05/1983/xcv xcv_external_degrees_extension.xsd">
+  <xcv:degree verbose="0"> <!--fr: grade-->
+    <xcv:begin>
+      <xcv:year>2010</xcv:year>
+    </xcv:begin>
+    <xcv:end>
+      <xcv:year>2013</xcv:year>
+    </xcv:end>
+    <xcv:title>License informatique</xcv:title>
+    <xcv:institute>Université de Piou Piou (UPP)</xcv:institute>
+    <xcv:location>
+      <xcv:country>France</xcv:country>
+      <xcv:city>Paris</xcv:city>
+    </xcv:location>
+    <xcv:status value="passed">obtenue</xcv:status>
+
+    <xcv:semesters>
+      <xcv:semester rank="1">
+	<xcv:credits>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Mathématiques générales 1</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">19.5</xcv:grade>
+	    <xcv:details>Rappels: calcul matriciel, applications, nombres complexes, polynômes et fractions rationnelles</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Introduction à l'informatique</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">15.5</xcv:grade>
+	    <xcv:details>Codage de l'information, changements de base, architecture générale des ordinateurs, XHTML et CSS.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Thermodynamique 1</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">18.67</xcv:grade>
+	    <xcv:details>Principes de la thermodynamique, machines thermiques.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Atomistique</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">13.5</xcv:grade>
+	    <xcv:details>Modèles de l'atome, classification périodique, architecture moléculaire, thermodynamique chimique.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Repères et concepts en Biologie</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">18.5</xcv:grade>
+	    <xcv:details>La biologie et ses outils, les biotechnologies, les micro-organismes, la virologie, la génétique, le clonage, les bio-molécules, techniques de la police scientifique.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Compléments de math 1</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">18.83</xcv:grade>
+	    <xcv:details>Logique, relations binaires, applications, numération et division euclidienne, groupes+sous-groupes.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Mathématiques générales 2</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">19.5</xcv:grade>
+	    <xcv:details>Rappels: limites et continuité, dérivabilité d'une fonction réelle, suites réelles.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Outils bureautiques et scientifiques</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.5</xcv:grade>
+	    <xcv:details>Excel, Impress, MS Word, OO Writer.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="0" type="major">
+	    <xcv:title>Signaux et circuits</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">13.75</xcv:grade>
+	    <xcv:details>Électrostatique, électrocinétique, réseaux électriques, puissance en courant alternatif.</xcv:details>
+	  </xcv:credit>
+
+	</xcv:credits>
+
+	<xcv:acquirees>
+	  <xcv:acquiree>culture scientifique</xcv:acquiree>
+	  <xcv:acquiree>rappels mathématiques</xcv:acquiree>
+	  <xcv:acquiree>outils bureautiques</xcv:acquiree>
+	</xcv:acquirees>
+
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">17.7</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+      </xcv:semester>
+
+      <xcv:semester rank="2">
+	<xcv:credits><!--UE-->
+
+	  <xcv:credit value="6" type="major">
+	    <xcv:title>Algorithmique et programmation</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.7</xcv:grade>
+	    <xcv:details>Définitions et concepts, exemples d'algorithmes de base (tri, recherche), module+procédures+fonctions+récursivité.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Introduction aux SE</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.7</xcv:grade>
+	    <xcv:details>Introduction aux systèmes d'exploitation UNIX-like, en particulier Linux. Commandes de base et scripts (Bash/shell).</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Introduction aux réseaux d'internet</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">14.35</xcv:grade>
+	    <xcv:details>Présentation des réseaux, notions de routage, adressages IP.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="2" type="major">
+	    <xcv:title>Programmation des robots</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">11.5</xcv:grade>
+	    <xcv:details>Introduction aux contraintes de la programmation en environnement réel, gestion de la précision des capteurs et approximations. Programmation pour Légo MindStorm.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="2" type="minor">
+	    <xcv:title>Projet Profesionnel de l'Étudiant</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.5</xcv:grade>
+	    <xcv:details>Introduction à la rédaction de rapports, à l'exposé d'une présentation, aux recherches documentaires et aux interviews.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="6" type="minor">
+	    <xcv:title>Algèbre 1</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.07</xcv:grade>
+	    <xcv:details>Espaces vectoriels, applications linéaires, matrices et déterminants, systèmes linéaires.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Analyse 1</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">18</xcv:grade>
+	    <xcv:details>Fonctions usuelles, primitives et intégrales, développements limités, équations différentielles.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="2" type="minor">
+	    <xcv:title>Anglais</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">17.97</xcv:grade>
+	  </xcv:credit>
+
+	  <xcv:credit value="0" type="minor">
+	    <xcv:title>Statistiques descriptives</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">10.44</xcv:grade>
+	    <xcv:details>Définitions et concepts, traitement des données univariées, traitement des données bi-variées.</xcv:details>
+	  </xcv:credit>
+
+	</xcv:credits>
+
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.18</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+
+	<xcv:acquirees>
+	  <xcv:acquiree>bases mathématiques</xcv:acquiree>
+	  <xcv:acquiree>introduction au Bash</xcv:acquiree>
+	  <xcv:acquiree>introduction aux réseaux</xcv:acquiree>
+	  <xcv:acquiree>introduction à l'algorithmique</xcv:acquiree>
+	</xcv:acquirees>
+      </xcv:semester>
+
+      <xcv:semester rank="3">
+	<xcv:credits><!--UE-->
+
+	  <xcv:credit value="6">
+	    <xcv:title>Algorithmique avancée</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.7</xcv:grade>
+	    <xcv:details>Premières structures de données (tables, tables de hachage), tri plus élaborés (quicksort, heapsort?), algorithmes mathématiques (pgcd, fibonnacci, etc.)</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Techniques de programmation</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">19</xcv:grade>
+	    <xcv:details>Techniques de programmation procédurales: factorisation, modularité, structuration, gestion de la mémoire, débogage. Programmation en C. Gestionnaire de version (Git). Doxygen.</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Programmation du jeu Puissance 4 en C, en mode console.</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>C</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://example.com/Puissance-4</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	  <xcv:credit value="6">
+	    <xcv:title>Mathématiques pour l'informaticien</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">20</xcv:grade>
+	    <xcv:details>Langage maéthématique, ensembles et fonctions, dénombrement, arithmétique, fonctions booléennes.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="6">
+	    <xcv:title>Conception et élaboration de contenu scientifique.</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">14.7</xcv:grade>
+	    <xcv:details>Notions de document scientifique, introduction à LaTeX + Beamer.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="2">
+	    <xcv:title>Anglais</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">14.7</xcv:grade>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Pratique des techniques de test</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">15.25</xcv:grade>
+	    <xcv:details>Qualité d'un test, niveau d'un test, techniques fonctionnelles, techniques structurelles.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Développement d'applications internet</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">12.6</xcv:grade>
+	    <xcv:details>XML, XHTML et JavaScript.</xcv:details>
+	  </xcv:credit>
+
+	</xcv:credits>
+
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.52</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+
+	<xcv:acquirees>
+	  <xcv:acquiree>mathématiques discrètes</xcv:acquiree>
+	  <xcv:acquiree>premières structures de données et algorithmes associés</xcv:acquiree>
+	  <xcv:acquiree>programmation C</xcv:acquiree>
+	  <xcv:acquiree>XHTML+CSS2+JavaScript</xcv:acquiree>
+	  <xcv:acquiree>techniques de test</xcv:acquiree>
+	</xcv:acquirees>
+      </xcv:semester>
+
+      <xcv:semester rank="4">
+	<xcv:credits><!--UE-->
+
+	  <xcv:credit value="6">
+	    <xcv:title>Structures de données</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">15.5</xcv:grade>
+	    <xcv:details>TAD, axiomatique des TAD et vérifications, étude et implémentation des structures de données de base de l'informatique (tables, listes, files, piles, applications, ensembles, arbres, graphes).</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Implémentation en C++ des structures de données usuelles de l'informatique.</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>C++</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://example.com/lists_trees</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Initiation aux bases de données</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">17.13</xcv:grade>
+	    <xcv:details>SGBD Oracle, langage de définition de données, langage de manipulation des données.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="6">
+	    <xcv:title>Programmation orientée objet</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">17.25</xcv:grade>
+	    <xcv:details>Concepts fondamentaux de la POO, illustrés en C++.</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Programmation du "jeu dont vous êtes le héro".</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>C++</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://example.com/you_are_the_hero</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	  <xcv:credit value="2">
+	    <xcv:title>Anglais</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">17.4</xcv:grade>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Informatique fondamentale</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">19.6</xcv:grade>
+	    <xcv:details>Limites des algorithmes, terminaison et calculabilité, théorie de la complexité, exactitude et preuve.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Programmation fonctionnelle</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">13.78</xcv:grade>
+	    <xcv:details>Introduction au paradigme fonctionnelle, illustré avec Scheme.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Informatique industrielle</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.34</xcv:grade>
+	    <xcv:details>Introduction à la programmation de microcontroleurs, électronique combinatoire et logique programmée.</xcv:details>
+	  </xcv:credit>
+
+	</xcv:credits>
+
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.62</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+
+	<xcv:acquirees>
+	  <xcv:acquiree>TAD</xcv:acquiree>
+	  <xcv:acquiree>Oracle</xcv:acquiree>
+	  <xcv:acquiree>propriétés des algorithmes</xcv:acquiree>
+	  <xcv:acquiree>POO/C++</xcv:acquiree>
+	  <xcv:acquiree>paradigme fonctionnel</xcv:acquiree>
+	  <xcv:acquiree>informatique embarquée (info indus)</xcv:acquiree>
+	</xcv:acquirees>
+      </xcv:semester>
+
+      <xcv:semester rank="5">
+	<xcv:credits><!--UE-->
+
+	  <xcv:credit value="4">
+	    <xcv:title>Bases de données avancées</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">17.3</xcv:grade>
+	    <xcv:details>SGBD Oracle, Langage de contrôle de données, algèbre relationnelle, normalisation, optimisations.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Graphes</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">15.41</xcv:grade>
+	    <xcv:details>Étude approfondie des graphes en tant que structures de données, algorithmes de parcours, recouvrement, recherches de chemins, coloration.</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Implémentation de la structure de données Graphe et des algorithmes associés.</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>C++</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://example.com/GraphJ</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Réseaux</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">15.5</xcv:grade>
+	    <xcv:details>Présentation des réseaux de l'internet, modèles en couches (OSI, Internet), mise en oeuvre de services réseaux (service mail, service ftp, service web, etc.)</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="2">
+	    <xcv:title>Anglais</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.6</xcv:grade>
+	  </xcv:credit>
+
+	  <xcv:credit value="6">
+	    <xcv:title>Technologies orientées objets</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">17.4</xcv:grade>
+	    <xcv:details>Étude des mécanismes orientés objets (interfaces, héritage, polymorphisme), étude de leurs implémentations dans divers langages (C++, Java, SmalTalk), études des librairies standards de C++ et Java.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Architecture des ordinateurs</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">11</xcv:grade>
+	    <xcv:details>Vue bas niveau de l'architecture des ordinateurs (circuits de calcul, électronique combinatoire et logique câblée, réalisation des mémoires, etc.), réalisation sur simulateur de composants de base (mémoire, séquenceur, unité arithmétique, etc.)</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Paradigmes de programmation</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">17.8</xcv:grade>
+	    <xcv:details>Études des paradigmes impératif et fonctionnelle, des typages (fonctionnel, dynamique, statique, objet), de la pragmatique objet et du problème sous-classage/sous-typage. Programmation concurrente, problèmes d'exlusion mutuelle, solutions par attente active et preuves des propriétés d'exlusion mutuelle.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="2">
+	    <xcv:title>Allemand</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">19</xcv:grade>
+	    <xcv:details>Introduction à la langue.</xcv:details>
+	  </xcv:credit>
+
+	</xcv:credits>
+
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.12</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+
+	<xcv:acquirees>
+	  <xcv:acquiree>Java core</xcv:acquiree>
+	  <xcv:acquiree>C++ core</xcv:acquiree>
+	  <xcv:acquiree>bases électroniques de l'informatique</xcv:acquiree>
+	  <xcv:acquiree>services réseaux</xcv:acquiree>
+	  <xcv:acquiree>normalisation + optimisation de BDD</xcv:acquiree>
+	  <xcv:acquiree>algorithmique des graphes</xcv:acquiree>
+	  <xcv:acquiree>approche de la concurrence</xcv:acquiree>
+	</xcv:acquirees>
+      </xcv:semester>
+
+      <xcv:semester rank="6">
+	<xcv:credits><!--UE-->
+
+	  <xcv:credit value="6">
+	    <xcv:title>Systèmes d'exploitation</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.56</xcv:grade>
+	    <xcv:details>Étude des systèmes d'exploitation, en particulier ceux du type UNIX. Multithreading, multiprocessing, conccurence, ordonnancement et gestion de files, priorités, systèmes interactifs vs temps réel, gestion de la mémoire.</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Implémentation d'un tri fusion multithreadé.</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>C++/Qt</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://example.com/Qt-Sorter-school-work</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	  <xcv:credit value="2">
+	    <xcv:title>Anglais</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">18.88</xcv:grade>
+	    <xcv:details>Phonétique anglaise, préparation aux TOEIC</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="6">
+	    <xcv:title>Systèmes distribués</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.20</xcv:grade>
+	    <xcv:details>Introduction aux systèmes distribués, illustrations en Java et C. Modèles de systèmes distribués (synchrone, asynchrone, fiabilité des canaux). Programmation des sockets, problématiques bas niveau (hétérogénéité des processus), Java RMI, études de l'état globale et horloges logiques.</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Implémentation d'un pong distribué.</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>C++/Qt</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://example.com/PongServer</xcv:url>
+		    <xcv:url>https://github.com/NinjaTrappeur/pong-client</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Introduction au génie logiciel</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16.25</xcv:grade>
+	    <xcv:details>Problématique du génie logiciel, crise du logiciel, critères de qualité, processus logiciels, méthodes de génie logiciel (formelles, semi-formelles, informelles), modèles de processus de développement (classiques, agiles).</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Spécifications formelles.</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>CASL</xcv:title>
+		  </xcv:tech>
+		  <xcv:tech>
+		    <xcv:title>VDM</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://example.com/Formal_spec</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Logique des programmes</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">18.25</xcv:grade>
+	    <xcv:details>Logique des proposition, logique des prédicats, méthodes de démonstration automatique de formules dans un système axiomatique (algorithme de balayage, méthode par réfutation).</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Théorie des langages et compilation</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">18.85</xcv:grade>
+	    <xcv:details>Introduction aux grammaires régulières, analyse des langages réguliers (expressions régulières, automates finis). Études des compilateurs, études approfondie la phase d'analyse lexicale.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4">
+	    <xcv:title>Recherche opérationnelle</xcv:title>
+	    <xcv:grade maxGrade="20" session="1">16</xcv:grade>
+	    <xcv:details>Application de la théorie des graphe à la recherche opérationnelle (ordonnancement: réseaux PERT et MPM, optimisation: flot max/ coût min). Programmation linéaire et méthode du simplexe. </xcv:details>
+	  </xcv:credit>
+
+	</xcv:credits>
+
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">17.05</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+
+	<xcv:acquirees>
+	  <xcv:acquiree>C++/Qt</xcv:acquiree>
+	  <xcv:acquiree>modèles de processus développement (classiques, agiles)</xcv:acquiree>
+	  <xcv:acquiree>formalisme des langages</xcv:acquiree>
+	  <xcv:acquiree>recherche opérationnelle</xcv:acquiree>
+	  <xcv:acquiree>démonstration automatique</xcv:acquiree>
+	  <xcv:acquiree>concurrence (systèmes distribués, SE multi-threading)</xcv:acquiree>
+	</xcv:acquirees>
+      </xcv:semester>
+    </xcv:semesters>
+
+    <xcv:ratingSummary>
+      <xcv:degreeYear rank="1" semestersRef="1 2">
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.94</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+      </xcv:degreeYear>
+      <xcv:degreeYear rank="2" semestersRef="3 4">
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.57</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+      </xcv:degreeYear>
+      <xcv:degreeYear rank="3" semestersRef="5 6">
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.58</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+      </xcv:degreeYear>
+    </xcv:ratingSummary>
+  </xcv:degree>
+
+  <xcv:degree verbose="0">
+    <xcv:begin>
+      <xcv:year>2013</xcv:year>
+    </xcv:begin>
+    <xcv:title>Master informatique option Technologies de l'Internet</xcv:title>
+    <xcv:institute>Université de Piou Piou</xcv:institute>
+    <xcv:location>
+      <xcv:country>France</xcv:country>
+      <xcv:city>Paris</xcv:city>
+    </xcv:location>
+    <xcv:status value="running">en cours</xcv:status>
+
+    <xcv:semesters>
+      <xcv:semester rank="1">
+	<xcv:credits>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Génie logiciel</xcv:title>
+	    <xcv:grade>15.25</xcv:grade>
+	    <xcv:details>Méthodes formelles: méthode B, VDM++ concurrent.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Spécification des systèmes</xcv:title>
+	    <xcv:grade>16.7</xcv:grade>
+	    <xcv:details>Modélisation des systèmes par réseaux de pétri, analyse des propriétés d'un réseau de pétri</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Systèmes concurrents</xcv:title>
+	    <xcv:grade>17.25</xcv:grade>
+	    <xcv:details>Synchronisation, techniques et outils de synchronisation par attente passive (sémaphores, rendez-vous, moniteurs)</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Introduction à la synthèse d'images</xcv:title>
+	    <xcv:grade>17.5</xcv:grade>
+	    <xcv:details>Introduction à OpenGL, rappels de géométrie.</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Programmation d'objet procéduraux 3D.</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>C++/Qt</xcv:title>
+		  </xcv:tech>
+		  <xcv:tech>
+		    <xcv:title>OpenGL</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://example.com/projetISI</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Ingénierie des réseaux</xcv:title>
+	    <xcv:grade>15.5</xcv:grade>
+	    <xcv:details>Couche physique, laison logique, protocoles de routage, protocoles sans-fils (MAC et routage), routeurs Cisco (CNA), méthodes formelles.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="2" type="major">
+	    <xcv:title>Anglais</xcv:title>
+	    <xcv:grade>19.08</xcv:grade>
+	    <xcv:details>Préparation au TOEIC</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Modélisation avancée centrée UML</xcv:title>
+	    <xcv:grade>14.2</xcv:grade>
+	    <xcv:details>Principes de modélisation, design pattern, langage UML</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Bilibothèques logicielles, conception et réutilisation</xcv:title>
+	    <xcv:grade>17</xcv:grade>
+	    <xcv:details>Design with reuse, design for reuse, principes de conception.</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Implémentation d'un composant logiciel (visualiseur).</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>Java</xcv:title>
+		  </xcv:tech>
+		  <xcv:tech>
+		    <xcv:title>Processing</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://github.com/NinjaTrappeur/pau-ware-view</xcv:url>
+		    <xcv:url>https://github.com/NinjaTrappeur/pau-ware-viewer-test</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	</xcv:credits>
+
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.39</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+
+	<xcv:acquirees>
+	  <xcv:acquiree>Java/Processing</xcv:acquiree>
+	  <xcv:acquiree>C++/Qt/OpenGL</xcv:acquiree>
+	  <xcv:acquiree>design partterns</xcv:acquiree>
+	  <xcv:acquiree>modélisation avec UML</xcv:acquiree>
+	  <xcv:acquiree>modélisation avec RdP</xcv:acquiree>
+	  <xcv:acquiree>administration des routeurs Cisco</xcv:acquiree>
+	  <xcv:acquiree>concurrence et synchronisation</xcv:acquiree>
+	</xcv:acquirees>
+      </xcv:semester>
+
+      <xcv:semester rank="2">
+	<xcv:credits>
+
+	  <xcv:credit value="6" type="major">
+	    <xcv:title>Projet tutoré</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details>Principes de la gestion de projets, implémentation d'une application mixte composants/agents via des Web services: Jade, Fractal, WebServices.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Conception des systèmes distribués</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details>Algorithmique distribuée: diffusion, concensus, transaction, exclusion mutuelle. Architectures n-tiers, Java Servlets, JSP, Hibernate.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Interface homme-machine</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details>Principes et norme de conception des IHM, critères d'évaluation d'une IHM.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Simulation et animation</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details>Algorithmique pour la simulation: détection de collisions, réactions aux collisions. GPGPU: OpenCL.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Structures et modèles des contenus du web</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details>Rappels sur la théorie des langages, langages de définition de modèles de documents (DTD, XSD), XML, XSLT.</xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Synthèse d'images avancée</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details>Introduction à WebGL. Étude des shaders.</xcv:details>
+	    <xcv:practical>
+	      <xcv:work>
+		<xcv:title>Réalisation d'un Pong en 3D sous WebGL.</xcv:title>
+		<xcv:technologies>
+		  <xcv:tech>
+		    <xcv:title>JavaScript</xcv:title>
+		  </xcv:tech>
+		  <xcv:tech>
+		    <xcv:title>WebGL</xcv:title>
+		  </xcv:tech>
+		  <xcv:tech>
+		    <xcv:title>Three.js</xcv:title>
+		  </xcv:tech>
+		</xcv:technologies>
+		<xcv:online>
+		  <xcv:site>
+		    <xcv:title>Github</xcv:title>
+		    <xcv:url>https://example.com/PongGL</xcv:url>
+		  </xcv:site>
+		</xcv:online>
+	      </xcv:work>
+	    </xcv:practical>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title>Résolution des problèmes en IA</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details>Méthode de preuve automatique, représentation d'un espace de solutions, méthodes de recherche d'une solution dans l'espace, heuristiques. Systèmes experts, théorie des jeux.</xcv:details>
+	  </xcv:credit>
+
+	</xcv:credits>
+	<xcv:acquirees>
+	  <xcv:acquiree>gestion de projet</xcv:acquiree>
+	  <xcv:acquiree>systèmes experts</xcv:acquiree>
+	  <xcv:acquiree>théorie des jeux</xcv:acquiree>
+	  <xcv:acquiree>WebGL</xcv:acquiree>
+	  <xcv:acquiree>OpenCL</xcv:acquiree>
+	  <xcv:acquiree>WebServices</xcv:acquiree>
+	  <xcv:acquiree>SMA</xcv:acquiree>
+	  <xcv:acquiree>POC (programmation orientée composants)</xcv:acquiree>
+	  <xcv:acquiree>XSD/DTD, XSLT, XML</xcv:acquiree>
+	</xcv:acquirees>
+      </xcv:semester>
+
+      <xcv:semester rank="3">
+	<xcv:credits>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Composants et services</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details></xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Ingénierie des modèles</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details></xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="5" type="major">
+	    <xcv:title>Réseaux haut débit et quelité de service</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details></xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="major">
+	    <xcv:title>Sécurité des systèmes informatiques</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details></xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="2" type="major">
+	    <xcv:title>Anglais</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details></xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title></xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details></xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title></xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details></xcv:details>
+	  </xcv:credit>
+
+	  <xcv:credit value="4" type="minor">
+	    <xcv:title></xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details></xcv:details>
+	  </xcv:credit>
+
+	</xcv:credits>
+	<xcv:acquirees></xcv:acquirees>
+      </xcv:semester>
+
+      <xcv:semester rank="4">
+	<xcv:credits>
+
+	  <xcv:credit value="30" type="major">
+	    <xcv:title>Stage en entreprise</xcv:title>
+	    <xcv:grade></xcv:grade>
+	    <xcv:details></xcv:details>
+	  </xcv:credit>
+
+	</xcv:credits>
+	<xcv:acquirees></xcv:acquirees>
+      </xcv:semester>
+    </xcv:semesters>
+
+    <xcv:ratingSummary>
+      <xcv:degreeYear rank="1" semestersRef="1 2">
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.94</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+      </xcv:degreeYear>
+      <xcv:degreeYear rank="2" semestersRef="3 4">
+	<xcv:rating>
+	  <xcv:grade maxGrade="20">16.57</xcv:grade>
+	  <xcv:honor value="very good">Très bien</xcv:honor>
+	</xcv:rating>
+      </xcv:degreeYear>
+    </xcv:ratingSummary>
+
+  </xcv:degree>
+</xcv:degrees>

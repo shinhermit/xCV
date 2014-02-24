@@ -166,6 +166,39 @@
 	  <xsl:text> - </xsl:text>
 	  <xsl:value-of select="$country"/>
 	</xsl:if>
+
+	<!--for degrees only: semesters summary-->
+	<xsl:for-each select="./xcv:semesters/xcv:semester[../../@verbose > 0]">
+	  <xsl:text>\\&#xA;&amp;</xsl:text>
+	  <xsl:text>\quad Semestre </xsl:text><xsl:value-of select="./@rank"/>
+	  <xsl:if test="./xcv:rating/xcv:grade or ./xcv:rating/xcv:honor">
+	    <xsl:text> (</xsl:text>
+	    <xsl:value-of select="./xcv:rating/xcv:grade"/> <xsl:text>/</xsl:text><xsl:value-of select="./xcv:rating/xcv:grade/@maxGrade"/>
+	    <xsl:if test="./xcv:rating/xcv:grade and ./xcv:rating/xcv:honor">
+	      <xsl:text>, </xsl:text>
+	    </xsl:if>
+	    <xsl:if test="./xcv:rating/xcv:honor">
+	      <xsl:text>mention </xsl:text>
+	    </xsl:if>
+	    <xsl:value-of select="./xcv:rating/xcv:honor"/>
+	    <xsl:text>)</xsl:text>
+	  </xsl:if>
+	  <xsl:text>: </xsl:text>
+	  <xsl:text>\begin{itemize}&#xA;\item[\quad\quad$\diamond$] </xsl:text>
+	  <xsl:for-each select="./xcv:acquirees/xcv:acquiree">
+	    <xsl:value-of select="."/>
+	    <xsl:choose>
+	      <xsl:when test="./following-sibling::xcv:acquiree">
+		<xsl:text>, </xsl:text>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<xsl:text>. </xsl:text>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </xsl:for-each>
+	  <xsl:text>\end{itemize}</xsl:text>
+	</xsl:for-each>
+
 	<xsl:text>\\&#xA;</xsl:text>
       </xsl:for-each>
       <xsl:text>\end{tabular}&#xA;&#xA;</xsl:text>
@@ -583,12 +616,25 @@
 
 	<!-- EDUCATION (university)-->
 	<xsl:when test="./@section = 'education'">
-	  <xsl:call-template name="educationTemplate">
-	    <xsl:with-param name="sectionTitle">
-	      <xsl:value-of select="$titleEducation"/>
-	    </xsl:with-param>
-	    <xsl:with-param name="items" select="$this/xcv:education/xcv:degrees/xcv:degree"/>
-	  </xsl:call-template>
+	  <xsl:variable name="externalDegreesFile" select="$this/xcv:education/xcv:degrees/@src"/>
+	  <xsl:choose>
+	    <xsl:when test="$externalDegreesFile">
+	      <xsl:call-template name="educationTemplate">
+		<xsl:with-param name="sectionTitle">
+		  <xsl:value-of select="$titleEducation"/>
+		</xsl:with-param>
+		<xsl:with-param name="items" select="document($externalDegreesFile)/xcv:degrees/xcv:degree"/>
+	      </xsl:call-template>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:call-template name="educationTemplate">
+		<xsl:with-param name="sectionTitle">
+		  <xsl:value-of select="$titleEducation"/>
+		</xsl:with-param>
+		<xsl:with-param name="items" select="$this/xcv:education/xcv:degrees/xcv:degree"/>
+	      </xsl:call-template>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</xsl:when>
 
 	<!-- EDUCATION (certificates)-->

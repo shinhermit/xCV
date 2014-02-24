@@ -18,6 +18,6 @@ One can use the W3C validator to check the schema and the example:
 http://www.utilities-online.info/xsdvalidation/
 
 # Todo
+* Test xsd validity after latest modification (XSD 1.1)
 * Write a script bash for simple automation (until there is the real tool).
-* Add an URL section for projects and realizations.
 * Develop the interactive tool for data entry and automation process.
