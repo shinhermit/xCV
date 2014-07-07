@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-
-<xcv:cv xmlns:xcv="http://dje.josuah.aron/09/05/1983/xcv"
+<?xml version="1.1" encoding="UTF-8"?>
+<xcv:cv xmlns:xcv="urn:dje:josuah:aron:09:05:1983:xcv"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://dje.josuah.aron/09/05/1983/xcv xcv.xsd">
+      xsi:schemaLocation="urn:dje:josuah:aron:09:05:1983:xcv ./xcv.xsd">
 
   <xcv:cvlang>fr</xcv:cvlang>
   <xcv:objective>Stage de 3 mois - développement d'applications.</xcv:objective>

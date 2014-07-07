@@ -1,9 +1,9 @@
-<?xml version="1.0"?>
+<?xml version="1.1" encoding="UTF-8"?>
 <xs:schema version="1.1"
 	   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://dje.josuah.aron/09/05/1983/xcv"
-           xmlns="http://dje.josuah.aron/09/05/1983/xcv"
-           elementFormDefault="qualified">
+	   targetNamespace="urn:dje:josuah:aron:09:05:1983:xcv"
+	   xmlns="urn:dje:josuah:aron:09:05:1983:xcv"
+     elementFormDefault="qualified">
 
   <!-- **************** De la documentation ***************** -->
   <xs:annotation>
@@ -48,7 +48,7 @@
       <xs:enumeration value="in progress"/>
       <xs:enumeration value="on standby"/>
       <xs:enumeration value="released"/>
-      <xs:enumeration value="activly maintained"/>
+      <xs:enumeration value="active"/>
       <xs:enumeration value="abandonned"/>
       <xs:enumeration value="deprecated"/>
       <xs:enumeration value="obsolete"/>
@@ -63,21 +63,25 @@
   </xs:simpleType>
 
   <xs:simpleType name="enumGradeHonor">
-    <xs:enumeration value="exceptional"/> <!-- A+ -->
-    <xs:enumeration value="excellent"/> <!-- A -->
-    <xs:enumeration value="very good"/> <!-- B -->
-    <xs:enumeration value="good"/> <!-- C -->
-    <xs:enumeration value="adequate"/> <!-- D -->
-    <xs:enumeration value="acceptable"/> <!-- E -->
-    <xs:enumeration value="weak"/> <!-- F -->
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="exceptional"/> <!-- A+ -->
+      <xs:enumeration value="excellent"/> <!-- A -->
+      <xs:enumeration value="very good"/> <!-- B -->
+      <xs:enumeration value="good"/> <!-- C -->
+      <xs:enumeration value="adequate"/> <!-- D -->
+      <xs:enumeration value="acceptable"/> <!-- E -->
+      <xs:enumeration value="weak"/> <!-- F -->
+    </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="enumCreditType"> <!-- credit = UE (unité d'enseignement) -->
-    <xs:enumeration value="minor"/>
-    <xs:enumeration value="major"/>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="minor"/>
+      <xs:enumeration value="major"/>
+    </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="enumLevel">
+  <xs:simpleType name="enumSkillLevel">
     <xs:restriction base="xs:string">
       <xs:enumeration value="beginner"/>
       <xs:enumeration value="medium"/>
@@ -85,14 +89,14 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="enumDisplay">
+  <xs:simpleType name="enumDisplayState">
     <xs:restriction base="xs:string">
       <xs:enumeration value="show"/>
       <xs:enumeration value="hide"/>
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="typeCVLang">
+  <xs:simpleType name="enumCVLang">
     <xs:restriction base="xs:string">
       <xs:enumeration value="fr"/>
       <xs:enumeration value="en"/>
@@ -102,11 +106,23 @@
   </xs:simpleType>
 
   <xs:simpleType name="typeSemestersList">
-    <xs:list itemType="xs:positiveInteger"/>
+    <xs:list itemType="xs:nonNegativeInteger"/>
   </xs:simpleType>
-
+  
+  <xs:simpleType name="typeSimplePhone">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\+]{0,1}[0-9]{3}-[0-9]{7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="typeEmail"> 
+    <xs:restriction base="xs:string"> 
+      <xs:pattern value="[^@]+@[^\.]+\..+"/> 
+    </xs:restriction> 
+  </xs:simpleType> 
+  
   <xs:simpleType name="typeVerboseLevel">
-    <xs:restriction base="xs:positiveInteger">
+    <xs:restriction base="xs:nonNegativeInteger">
       <xs:maxInclusive value="3"/>
     </xs:restriction>
   </xs:simpleType>
@@ -117,19 +133,7 @@
       <xs:maxInclusive value="INF"/>
     </xs:restriction>
   </xs:simpleType>
-
-  <xs:simpleType name="typeSimplePhone">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="[\+]{0,1}[0-9]{3}-[0-9]{7}"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="typeEmail"> 
-    <xs:restriction base="xs:string"> 
-      <xs:pattern value="[^@]+@[^\.]+\..+"/> 
-    </xs:restriction> 
-  </xs:simpleType> 
-
+  
   <xs:simpleType name="typeYear"> 
     <xs:restriction base="xs:positiveInteger">
       <xs:minInclusive value="01"/>
@@ -152,19 +156,19 @@
   </xs:simpleType> 
 
   <xs:simpleType name="typeHour"> 
-    <xs:restriction base="xs:positiveInteger">
+    <xs:restriction base="xs:nonNegativeInteger">
       <xs:maxInclusive value="24"/>
     </xs:restriction>
   </xs:simpleType> 
 
   <xs:simpleType name="typeMinute"> 
-    <xs:restriction base="xs:positiveInteger">
+    <xs:restriction base="xs:nonNegativeInteger">
       <xs:maxInclusive value="60"/>
     </xs:restriction>
   </xs:simpleType> 
 
   <xs:simpleType name="typeSecond"> 
-    <xs:restriction base="xs:positiveInteger">
+    <xs:restriction base="xs:nonNegativeInteger">
       <xs:maxInclusive value="60"/>
     </xs:restriction>
   </xs:simpleType> 
@@ -173,7 +177,7 @@
   <!-- **** La racine **** -->
   <xs:complexType name="cvRoot">
     <xs:all>
-      <xs:element name="cvlang" type="typeCVLang" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="cvlang" type="enumCVLang" minOccurs="1" maxOccurs="1"/>
       <xs:element name="objective" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="picture" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
       <xs:element name="identity" type="typeIdentity" minOccurs="1" maxOccurs="1"/>
@@ -199,16 +203,10 @@
   </xs:complexType>
 
   <xs:complexType name="typeEducation"> <!-- raaa: Exprimer que l'élément doit contenir au moins l'un des deux fils -->
-    <xs:choice>
-      <xs:all>
-	<xs:element name="degrees" type="typeEducationDegrees" minOccurs="1" maxOccurs="1"/>
-	<xs:element name="certificates" type="typeEducationCertificates" minOccurs="0" maxOccurs="1"/>
-      </xs:all>
-      <xs:all>
-	<xs:element name="degrees" type="typeEducationDegrees" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="certificates" type="typeEducationCertificates" minOccurs="1" maxOccurs="1"/>
-      </xs:all>
-    </xs:choice>
+    <xs:all>
+      <xs:element name="degrees" type="typeEducationDegrees" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="certificates" type="typeEducationCertificates" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
   </xs:complexType>
 
   <xs:complexType name="typeJobs">
@@ -218,16 +216,10 @@
   </xs:complexType>
 
   <xs:complexType name="typeWorks"> <!-- raaa: Exprimer que l'élément doit contenir au moins l'un des deux fils-->
-    <xs:choice>
       <xs:all>
-	<xs:element name="realizations" type="typeWorkRealizations" minOccurs="1" maxOccurs="1"/>
-	<xs:element name="projects" type="typeWorkProjects" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="realizations" type="typeWorkRealizations" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="projects" type="typeWorkProjects" minOccurs="0" maxOccurs="1"/>
       </xs:all>
-      <xs:all>
-	<xs:element name="realizations" type="typeWorkRealizations" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="projects" type="typeWorkProjects" minOccurs="1" maxOccurs="1"/>
-      </xs:all>
-    </xs:choice>
   </xs:complexType>
 
   <xs:complexType name="typeSkills">
@@ -278,22 +270,22 @@
   </xs:complexType>
 
   <xs:complexType name="typeEvolvingIdentity">
-    <xs:all>
+    <xs:sequence> <!-- Should be xs:all, but the later can't have xs:choice as child -->
       <xs:element name="qualification" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="address" type="typeAddress" minOccurs="1" maxOccurs="1"/>
       <xs:choice>
-	<xs:element name="phone" type="typePhone" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="phoneList" type="typePhones" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="phone" type="typePhone" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="phoneList" type="typePhones" minOccurs="0" maxOccurs="1"/>
       </xs:choice>
       <xs:choice>
-	<xs:element name="email" type="typeEmail" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="emailList" type="typeEmails" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="email" type="typeEmail" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="emailList" type="typeEmails" minOccurs="0" maxOccurs="1"/>
       </xs:choice>
       <xs:choice>
-	<xs:element name="online" type="typeOnline" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="onlineList" type="typeOnlines" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="online" type="typeOnline" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="onlineList" type="typeOnlines" minOccurs="0" maxOccurs="1"/>
       </xs:choice>
-    </xs:all>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="typeEducationDegrees">
@@ -441,7 +433,7 @@
       <xs:element name="city" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="road" type="typeRoad" minOccurs="0" maxOccurs="1"/>
       <xs:element name="appartment" type="typeAppartment" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="zipcode" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="zipcode" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -449,14 +441,14 @@
     <xs:sequence>
       <xs:element name="phonecode" minOccurs="0" maxOccurs="1">
 	<xs:simpleType>
-	  <xs:restriction base="xs:positiveInteger">
+	  <xs:restriction base="xs:nonNegativeInteger">
 	    <xs:maxInclusive value="999"/> <!-- 3 digits -->
 	  </xs:restriction>
 	</xs:simpleType>
       </xs:element>
       <xs:element name="phonenum" minOccurs="1" maxOccurs="1">
 	<xs:simpleType>
-	  <xs:restriction base="xs:positiveInteger">
+	  <xs:restriction base="xs:nonNegativeInteger">
 	    <xs:maxInclusive value="9999999999"/> <!-- 10 digits -->
 	  </xs:restriction>
 	</xs:simpleType>
@@ -471,44 +463,48 @@
   </xs:complexType>
 
   <xs:complexType name="typeDegree">
-    <xs:choice>
       <xs:all> <!-- Exprimer que le type doit contenir au moins une des deux dates -->
-	<xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
-	<xs:element name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="status" type="typeDegreeStatus" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="semesters" type="typeSemesters" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="rating" type="typeRating" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="ratingSummary" type="typeRatingSummary" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="acquirees" type="typeAcquirees" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      	<xs:element name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="status" type="typeDegreeStatus" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="semesters" type="typeSemesters" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="rating" type="typeRating" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="ratingSummary" type="typeRatingSummary" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="acquirees" type="typeAcquirees" minOccurs="0" maxOccurs="1"/>
       </xs:all>
-      <xs:attribute name="src" type="anyURI"/>
-    </xs:choice>
     <xs:attribute name="verbose" type="typeVerboseLevel" default="0"/>
   </xs:complexType>
-
-  <xs:complexType name="typeCertificates">
-    <xs:choice>
-      <xs:all>
-	<xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
-	<xs:element name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="status" type="typeDegreeStatus" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="credits" type="typeCredits" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="rating" type="typeRating" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="acquirees" type="typeAcquirees" minOccurs="0" maxOccurs="1"/>
-      </xs:all>
-      <xs:attribute name="src" type="anyURI"/>
-    </xs:choice>
-    <xs:attribute name="verbose" type="typeVerboseLevel"/>
+  
+  <xs:complexType name="typeDegreeFile">
+      <xs:attribute name="src" type="xs:anyURI"/>
+    <xs:attribute name="verbose" type="typeVerboseLevel" default="0"/>
   </xs:complexType>
-
+  
+  <xs:complexType name="typeCertificate">
+      <xs:all>
+      	<xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="end" type="typeDate" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      	<xs:element name="institute" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="location" type="typeAddress" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="status" type="typeDegreeStatus" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="credits" type="typeCredits" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="rating" type="typeRating" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="acquirees" type="typeAcquirees" minOccurs="0" maxOccurs="1"/>
+      </xs:all>
+    <xs:attribute name="verbose" type="typeVerboseLevel" default="0"/>
+  </xs:complexType>
+  
+  <xs:complexType name="typeCertificateFile">
+    <xs:attribute name="src" type="xs:anyURI"/>
+    <xs:attribute name="verbose" type="typeVerboseLevel" default="0"/>
+  </xs:complexType>
+  
   <xs:complexType name="typeWork">
     <xs:all>
       <xs:element name="begin" type="typeDate" minOccurs="0" maxOccurs="1"/>
@@ -553,30 +549,30 @@
   </xs:complexType>
 
   <xs:complexType name="typeRatingSummary">
-    <xs:complexType>
       <xs:sequence>
-	<xs:element name="degreeYear" minOccurs="1" maxOccurs="unbounded">
-	  <xs:complexType>
-	    <xs:element name="rating" type="typeRating" minOccurs="1" maxOccurs="1"/>
-	    <xs:attribute name="rank" type="xs:positiveInteger" use="required"/>
-	    <xs:attribute name="semestersRef" type="typeSemestersList"/>
-	  </xs:complexType>
-	</xs:element>
+      	<xs:element name="degreeYear" minOccurs="1" maxOccurs="unbounded">
+      	  <xs:complexType>
+      	    <xs:all>
+      	      <xs:element name="rating" type="typeRating" minOccurs="1" maxOccurs="1"/>
+      	    </xs:all>
+      	    <xs:attribute name="rank" type="xs:nonNegativeInteger" use="required"/>
+      	    <xs:attribute name="semestersRef" type="typeSemestersList"/>
+      	  </xs:complexType>
+      	</xs:element>
       </xs:sequence>
-    </xs:complexType>
   </xs:complexType>
 
   <xs:complexType name="typeRating">
     <xs:sequence>
       <xs:element name="grade" type="typeGrade" minOccurs="1" maxOccurs="1"/>
       <xs:element name="honor" minOccurs="0" maxOccurs="1">
-	<xs:complextype>
-	  <xs:simpleContent>
-	    <xs:extension base="xs:string">
-	      <xs:attribute name="value" type="enumGradeHonor" use="required"/>
-	    </xs:extension>
-	  </xs:simpleContent>
-	</xs:complextype>
+      	<xs:complexType>
+      	  <xs:simpleContent>
+      	    <xs:extension base="xs:string">
+      	      <xs:attribute name="value" type="enumGradeHonor" use="required"/>
+      	    </xs:extension>
+      	  </xs:simpleContent>
+      	</xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
@@ -590,7 +586,7 @@
   <xs:complexType name="typeRoad">
     <xs:all>
       <xs:element name="rdtype" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="rdnum" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="rdnum" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
       <xs:element name="rdname" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="rdext" type="xs:string" minOccurs="0" maxOccurs="1"/> <!-- bis, ter,... -->
     </xs:all>
@@ -598,7 +594,7 @@
 
   <xs:complexType name="typeAppartment">
     <xs:all>
-      <xs:element name="appnum" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="appnum" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
       <xs:element name="building" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="appmisc" type="xs:string" minOccurs="0" maxOccurs="1"/>
     </xs:all>
@@ -630,8 +626,8 @@
   <xs:complexType name="typeLevel">
     <xs:simpleContent>
       <xs:extension base="xs:string">
-	<xs:attribute name="value" type="enumLevel" use="required"/>
-	<xs:attribute name="display" type="enumDisplay" default="show"/>
+	<xs:attribute name="value" type="enumSkillLevel" use="required"/>
+	<xs:attribute name="display" type="enumDisplayState" default="show"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -648,6 +644,12 @@
       <xs:element name="position" type="typeJobPosition" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
+  
+  <xs:complexType name="typePractical">
+    <xs:sequence>
+      <xs:element name="work" type="typeWork" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
 
   <!-- **** Niveau 5 **** -->
 
@@ -655,7 +657,7 @@
     <xs:simpleContent>
       <xs:extension base="typePositiveReal">
 	<xs:attribute name="maxGrade" type="typePositiveReal"/>
-	<xs:attribute name="session" type="xs:positiveInteger"/>
+        <xs:attribute name="session" type="xs:nonNegativeInteger"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -666,19 +668,20 @@
       <xs:element name="rating" type="typeRating" minOccurs="0" maxOccurs="1"/>
       <xs:element name="acquirees" type="typeAcquirees" minOccurs="0" maxOccurs="1"/>
     </xs:all>
-    <xs:attribute name="rank" type="xs:positiveInteger"/>
+    <xs:attribute name="rank" type="xs:nonNegativeInteger"/>
   </xs:complexType>
 
   <xs:complexType name="typeCredit">
-    <xs:all>
+    <xs:sequence>
       <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:choice>
-	<xs:element name="rating" type="typeRating" minOccurs="0" maxOccurs="1"/>
-	<xs:element name="grade" type="typeGrade" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="rating" type="typeRating" minOccurs="0" maxOccurs="1"/>
+      	<xs:element name="grade" type="typeGrade" minOccurs="0" maxOccurs="1"/>
       </xs:choice>
       <xs:element name="details" type="xs:string" minOccurs="0" maxOccurs="1"/>
-    </xs:all>
-    <xs:attribute name="value" type="xs:positiveInteger"/>
+      <xs:element name="practical" type="typePractical" minOccurs="0" maxOccurs="1"/> <!-- TP -->
+    </xs:sequence>
+    <xs:attribute name="value" type="xs:nonNegativeInteger"/>
     <xs:attribute name="type" type="enumCreditType"/>
   </xs:complexType>
 

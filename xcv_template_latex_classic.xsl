@@ -1,11 +1,16 @@
-<?xml version="1.0"?>
-<xsl:stylesheet version="1.0"
-		xmlns:xcv="http://dje.josuah.aron/09/05/1983/xcv"
-		xmlns:xtr="http://dje.josuah.aron/09/05/1983/xtranslate"
-		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<?xml version="1.1" encoding="UTF-8"?>
+<xsl:stylesheet version="2.0"
+	xmlns:xcv="urn:dje:josuah:aron:09:05:1983:xcv"
+	xmlns:ord="urn:dje:josuah:aron:09:05:1983:xcv:ordering"
+	xmlns:ext="urn:dje:josuah:aron:09:05:1983:xcv:ede"
+	xmlns:xtr="urn:dje:josuah:aron:09:05:1983:xtranslate"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:output method="text" omit-xml-declaration="yes" encoding="UTF-8"/>
-
+	
+	<xsl:import-schema namespace="urn:dje:josuah:aron:09:05:1983:xcv" schema-location="./xcv_ordering.xsd"/>
+	<xsl:import-schema namespace="urn:dje:josuah:aron:09:05:1983:xcv" schema-location="./xcv.xsd"/>
+	
   <!-- ******** Transforms are defined as functions, for reuse and "from-file-ordering" ******** -->
   <!-- EXPERIENCE AND JOBS (positions) -->
   <xsl:template name="jobsTemplate">
@@ -370,7 +375,7 @@
   <xsl:template match="xcv:cv">
 
     <!-- Begin: Get the translate titles from file-->
-    <xsl:variable name="translate" select="document(concat('xcv_translate_',./xcv:cvlang/text(),'.xml'), document(''))/*"/>
+    <xsl:variable name="translate" select="document(concat('xcv_translate_',./xcv:cvlang/text(),'.xml'))/*"/>
 
     <xsl:variable name="titleObjective">
       <xsl:call-template name="getTitle">
@@ -611,7 +616,7 @@
 
     <!-- Ordering sections from a file -->
     <xsl:variable name="this" select="."/>
-    <xsl:for-each select="document('xcv_ordering.xml')/xcv:ordering/xcv:position">
+  	<xsl:for-each select="document('xcv_ordering.xml')/ord:ordering/ord:position">
       <xsl:choose>
 
 	<!-- EDUCATION (university)-->
@@ -623,7 +628,7 @@
 		<xsl:with-param name="sectionTitle">
 		  <xsl:value-of select="$titleEducation"/>
 		</xsl:with-param>
-		<xsl:with-param name="items" select="document($externalDegreesFile)/xcv:degrees/xcv:degree"/>
+	      	<xsl:with-param name="items" select="document($externalDegreesFile)/ext:degrees/xcv:degree"/>
 	      </xsl:call-template>
 	    </xsl:when>
 	    <xsl:otherwise>

@@ -1,9 +1,11 @@
-<?xml version="1.0"?>
+<?xml version="1.1"?>
+<!-- ede : external degrees extension-->
 <xs:schema version="1.1"
 	   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://dje.josuah.aron/09/05/1983/xcv"
-           xmlns="http://dje.josuah.aron/09/05/1983/xcv"
-           elementFormDefault="qualified">
+	   targetNamespace="urn:dje:josuah:aron:09:05:1983:xcv:ede"
+	   xmlns="urn:dje:josuah:aron:09:05:1983:xcv:ede"
+	   xmlns:xcv="urn:dje:josuah:aron:09:05:1983:xcv"
+	   elementFormDefault="qualified">
 
   <!-- **************** De la documentation ***************** -->
   <xs:annotation>
@@ -26,10 +28,10 @@
 
   <!-- ************* Inclusion du schéma principale ************* -->
 
-  <xs:include schemaLocation="./xcv.xsd"/>
+  <xs:import namespace="urn:dje:josuah:aron:09:05:1983:xcv" schemaLocation="./xcv.xsd"/>
 
   <!-- ************* Déclaration d'une nouvelle racine potentielle ************* -->
 
-  <xs:element name="degrees" type="typeDegrees"/>
+  <xs:element name="degrees" type="xcv:typeEducationDegrees"/>
 
 </xs:schema>

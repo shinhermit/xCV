@@ -1,0 +1,437 @@
+
+
+  fr
+  Stage de 3 mois - développement d'applications.
+  lion.png
+
+  
+    
+      
+	Mitsu
+	Irato
+	
+	  Shinobi
+	  Sama
+	
+      
+
+      
+	1783
+	08
+	04
+      
+
+      
+	Nigéria
+	Kogi
+	Lokoja
+      
+
+      japonaise
+    
+
+    
+      Ingénieur - développeur
+      
+	USA
+	Californie
+	Modoc
+	Alturas
+	
+	  rue
+	  de la grande bataille féodale
+	  1
+	  bis 
+	
+	
+	  21
+	  C
+	  Résidence du Fou
+	
+	75000
+      
+
+      
+	1
+	999999999
+      
+      mitsu.irato@samourai.com
+      
+	
+	  Dépot git
+	  https://github.com/shinhermit?tab=repositories
+	  https://github.com/shinhermit
+	
+      
+    
+  
+
+  
+    
+      
+	
+	  2013
+	
+	
+	  2015
+	
+	Master Technologies de l'IA
+	Université de Paris
+	
+	  France
+	  Grenoble
+	
+	en cours
+	
+      
+      
+	
+	  2010
+	
+	
+	  2013
+	
+	License Informatique
+	Université de Grenoble
+	
+	  France
+	  Paris
+	
+	obtenu
+	
+      
+    
+
+    
+      
+	
+	  1999
+	  01
+	
+	
+	  1999
+	  06
+	
+	Cisco
+	Cisco
+	
+	  Thaïlande
+	  Bangkok
+	
+	Advanced Cisco routers management
+      
+    
+  
+
+  
+    
+      
+	2000
+      
+      
+	2005
+      
+      Chef analyste
+      NSA
+      
+	Chine
+	Tokio
+      
+      Hacking avancé sur puce AVR
+    
+  
+
+   
+    
+      
+	2011
+	10
+      
+      
+	2013
+	12
+      
+      Barman
+      Station des artistes
+      
+	Allemagne
+	Munich
+      
+      Acquis résistance accrue à la marijuana
+    
+    
+      
+	2011
+	09
+      
+      
+	2011
+	10
+      
+      Employé polyvalent
+      Mac Donalds
+      
+	Russie
+	Moscou
+      
+      Maîtrise des sandwichs trop gras
+    
+  
+
+   
+    
+      
+	
+	  2014
+	  02
+	
+	
+	  2014
+	  03
+	
+	xCV
+	Composition de document
+	
+	  
+	    XML
+	    XSD, XSLT
+	  
+	  
+	    Python
+	    PySide, Python core
+	  
+	
+	Skynet
+	
+	  
+	    
+	      Mistu
+	      Irato
+	    
+	    
+	      Employé municipal
+	      Ville de Paris
+	      
+		France
+		Paris
+	      
+	    
+	  
+	
+	en développement
+	Séparer la présentation d'un CV de sa construction (données)
+      
+    
+
+    
+      
+	
+	  2013
+	
+	
+	  2014
+	
+	Réseau neuronal
+	IA
+	
+	  
+	    C++
+	    C++, Graphes
+	  
+	
+	
+	
+	  
+	    
+	      Mitsu
+	      Irato
+	    
+	    
+	      Employé municipal
+	      Ville de Paris
+	      
+		France
+		Paris
+	      
+	    
+	  
+	  
+	    
+	      Le Grand
+	      Maître
+	    
+	  
+	
+	stand-by
+	Projet à reprendre dans les mois à venir
+      
+    
+  
+
+   
+    
+      
+	
+	  C++, Qt
+	  intermédiaire
+	  3 ans d'expérience
+	
+	
+	  Java
+	  intermédiaire
+	  
+	
+	
+	  C
+	  intermédiaire
+	  
+	
+	
+	  Python
+	  débutant
+	  
+	
+      
+      
+	
+	  Oracle, MySql, Access
+	  intermédiaire
+	  
+	
+      
+      
+	
+	  
+	  intermédiaire
+	  Administration de base, programmation.
+	
+      
+      
+	
+	  PHP
+	  intermédiaire
+	  4 ans d'expérience
+	
+	
+	  HTML, XML, CSS
+	  intermédiaire
+	  
+	
+	
+	  JavaScript, JQuery
+	   débutant
+	  
+	
+	
+	  Pyramid, Zend
+	  débutant
+	  
+	
+      
+    
+
+    
+      
+	
+	  WebGL, Three.js
+	  débutant
+	  Réalisé: jeu 3D stunt pong
+	
+      
+      
+	
+	  Bash
+	  débutant
+	  
+	
+      
+      
+	
+	  Photoshop, 3dsmax, Gimp, after effect, Premiere
+	  débutant
+	  
+	
+      
+      
+	
+	  MS office / Libre Office
+	  intermédiaire
+	  J'étais obligé
+	
+      
+    
+  
+
+  
+    
+      Français
+      avancé
+      
+    
+    
+      Anglais
+      intermédiaire
+      Score TOEIC (décembre 2011): 1000/990
+    
+    
+      Allemand
+      débutant
+      
+    
+  
+
+  
+    
+      Sport
+      vélo, tennis, basketball
+    
+    
+      Écriture, réalisation
+      textes courts, histoires courtes, scénario, animation 3D, films
+    
+  
+
+  
+    
+      2020
+      Pourquoi les robots ont gagné la guerre?
+      Skynet
+      
+	
+	  
+	    Mitsu
+	    Irato
+	  
+	
+	
+	  
+	    Le Grand
+	    Maître
+	  
+	
+      
+    
+  
+
+  
+    
+      2021
+      IA vs I simple
+      Comment battre les robots?
+      
+	Guinée
+	Kindia
+      
+      Skynet
+      Conférence réservée au public non augmenté
+    
+  
+
+   
+    
+      2018
+      Père de l'IA
+      Fondation Nobel
+      En reconnaissance de l'apport décisif au domaine de l'IA, aboutissant à l'IA
+    
+  

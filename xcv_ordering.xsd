@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="urn:dje:josuah:aron:09:05:1983:xcv:ordering"
+    xmlns="urn:dje:josuah:aron:09:05:1983:xcv:ordering"
+    elementFormDefault="qualified"
+    >
+    
+    <!-- **************** De la documentation ***************** -->
+    <xs:annotation>
+        <!-- Pour les humains -->
+        <xs:documentation>
+            <p>Petit schéma embarqué, pour définir les éléments du dialecte permettant de décrire l'ordonnancement des sections dans un document xCV.</p>
+            <p>Les sections apparaîtront tout simplement dans l'ordre où elles sont cités dans les éléments "position"</p>
+        </xs:documentation>
+        
+        <!-- Pour les machines: Dublin core -->
+        <xs:appinfo xmlns:dc="http://purl.org/dc/elements/1.1/">
+            <dc:creator>Josuah Aron (mailto:josuah.aron@gmail.com)</dc:creator>
+            <dc:date>2014-02-14</dc:date>
+            <dc:subject>XML,cv,curriculum,vitea,dialect,order,ordering</dc:subject>
+            <dc:description>
+                Ce petit schéma embarqué permet de définir les éléments d'un dialecte pour décrire l'ordonnancement des sections dans un document xCV.
+            </dc:description>
+        </xs:appinfo>
+    </xs:annotation>
+    
+    <!-- ***************** Spécification des éléments ***************** -->
+    <xs:element name="ordering">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="position" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="xs:anyType">
+                                <xs:attribute name="section" use="required"/>
+                            </xs:extension>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
