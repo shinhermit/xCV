@@ -1,5 +1,5 @@
-<?xml version="1.1" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
 	xmlns:xcv="urn:dje:josuah:aron:09:05:1983:xcv"
 	xmlns:ord="urn:dje:josuah:aron:09:05:1983:xcv:ordering"
 	xmlns:ext="urn:dje:josuah:aron:09:05:1983:xcv:ede"
@@ -8,8 +8,8 @@
 
   <xsl:output method="text" omit-xml-declaration="yes" encoding="UTF-8"/>
 	
-	<xsl:import-schema namespace="urn:dje:josuah:aron:09:05:1983:xcv" schema-location="./xcv_ordering.xsd"/>
-	<xsl:import-schema namespace="urn:dje:josuah:aron:09:05:1983:xcv" schema-location="./xcv.xsd"/>
+	<!--xsl:import-schema namespace="urn:dje:josuah:aron:09:05:1983:xcv" schema-location="./xcv_ordering.xsd"/>
+	<xsl:import-schema namespace="urn:dje:josuah:aron:09:05:1983:xcv" schema-location="./xcv.xsd"/-->
 	
   <!-- ******** Transforms are defined as functions, for reuse and "from-file-ordering" ******** -->
   <!-- EXPERIENCE AND JOBS (positions) -->
@@ -91,8 +91,9 @@
 	</xsl:if>
 	<xsl:variable name="url" select="./xcv:online/xcv:site/xcv:url"/>
 	<xsl:if test="$url/text()">
-	  <xsl:text>, </xsl:text>
+	  <xsl:text>, \url{</xsl:text>
 	  <xsl:value-of select="$url"/>
+	  <xsl:text>}</xsl:text>
 	</xsl:if>
 	<xsl:text>\\&#xA;</xsl:text>
       </xsl:for-each>
@@ -483,6 +484,7 @@
 \usepackage[french]{babel}
 %\usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
 
 \usepackage{array, xcolor}
 \usepackage[margin=3cm]{geometry}&#xA;&#xA;
